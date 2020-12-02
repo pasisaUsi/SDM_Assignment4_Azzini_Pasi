@@ -115,7 +115,7 @@ public final class SchemaMetadataJsonConverter {
         case VARCHAR: // falling through intentionally
         case CHAR:
             typeAsJson.add("size", ((CharType) dataType).getSize());
-            typeAsJson.add("characterSet", getCharacterSetName(dataType.getCharset()));
+            typeAsJson.add("characterSet", getCharacterSetName(((CharType) dataType).getCharset()));
             break;
         case TIMESTAMP:
             typeAsJson.add("withLocalTimeZone", dataType.isWithLocalTimezone());
