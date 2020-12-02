@@ -1,5 +1,27 @@
 package com.exasol.adapter;
 
+import com.exasol.ExaMetadata;
+import com.exasol.adapter.metadata.ColumnMetadata;
+import com.exasol.adapter.metadata.SchemaMetadata;
+import com.exasol.adapter.metadata.TableMetadata;
+import com.exasol.adapter.metadata.datatype.DecimalType;
+import com.exasol.adapter.request.*;
+import com.exasol.adapter.response.*;
+import org.itsallcode.io.Capturable;
+import org.itsallcode.junit.sysextensions.SystemErrGuard;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 import static org.hamcrest.Matchers.startsWith;
@@ -8,22 +30,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
-import java.util.*;
-
-import org.itsallcode.io.Capturable;
-import org.itsallcode.junit.sysextensions.SystemErrGuard;
-import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mock;
-import org.mockito.MockitoAnnotations;
-import org.mockito.junit.jupiter.MockitoExtension;
-
-import com.exasol.ExaMetadata;
-import com.exasol.adapter.metadata.*;
-import com.exasol.adapter.metadata.datatype.DecimalType;
-import com.exasol.adapter.request.*;
-import com.exasol.adapter.response.*;
 
 @ExtendWith(MockitoExtension.class)
 @ExtendWith(SystemErrGuard.class)

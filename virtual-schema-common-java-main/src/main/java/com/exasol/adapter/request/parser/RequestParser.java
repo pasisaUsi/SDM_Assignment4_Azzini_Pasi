@@ -73,8 +73,12 @@ public class RequestParser extends AbstractRequestParser {
     private AbstractAdapterRequest parsePushdownRequest(final JsonObject root, final SchemaMetadataInfo metadataInfo,
             final String adapterName) {
         final SqlStatement statement = parsePushdownStatement(root);
-        final List<TableMetadata> involvedTables = parseInvolvedTables(root);
+        final List<TableMetadata> involvedTables = parseInvolvedTablesMetadata(root);
         return new PushDownRequest(adapterName, metadataInfo, statement, involvedTables);
+    }
+
+    private List<TableMetadata> parseInvolvedTablesMetadata(final JsonObject root) {
+        return new TablesMetadataParser().parse(root.getJsonArray("involvedTables"));
     }
 
     private String extractAdapterNameFromMetadataInfo(final SchemaMetadataInfo metadataInfo) {

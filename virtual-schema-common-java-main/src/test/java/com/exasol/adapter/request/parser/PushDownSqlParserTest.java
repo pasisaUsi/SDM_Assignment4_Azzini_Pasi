@@ -1,26 +1,31 @@
 package com.exasol.adapter.request.parser;
 
+import com.exasol.adapter.metadata.ColumnMetadata;
+import com.exasol.adapter.metadata.TableMetadata;
+import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.DecimalType;
+import com.exasol.adapter.metadata.datatype.ExaCharset;
+import com.exasol.adapter.metadata.datatype.VarCharType;
+import com.exasol.adapter.sql.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import javax.json.Json;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
+import java.io.ByteArrayInputStream;
+import java.io.StringReader;
+import java.math.BigDecimal;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+
 import static com.exasol.adapter.sql.SqlFunctionAggregateListagg.BehaviorType.TRUNCATE;
 import static com.exasol.adapter.sql.SqlNodeType.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import static org.junit.jupiter.api.Assertions.assertAll;
-
-import java.io.ByteArrayInputStream;
-import java.io.StringReader;
-import java.math.BigDecimal;
-import java.nio.charset.StandardCharsets;
-import java.util.*;
-
-import javax.json.*;
-
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-
-import com.exasol.adapter.metadata.ColumnMetadata;
-import com.exasol.adapter.metadata.TableMetadata;
-import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.sql.*;
 
 class PushDownSqlParserTest {
     private JsonObject jsonObject;

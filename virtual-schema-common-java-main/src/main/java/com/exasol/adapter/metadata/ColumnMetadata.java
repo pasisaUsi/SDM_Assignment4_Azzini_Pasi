@@ -1,8 +1,8 @@
 package com.exasol.adapter.metadata;
 
-import java.util.Objects;
-
 import com.exasol.adapter.metadata.datatype.DataType;
+
+import java.util.Objects;
 
 /**
  * Represents the metadata of an EXASOL table column.
