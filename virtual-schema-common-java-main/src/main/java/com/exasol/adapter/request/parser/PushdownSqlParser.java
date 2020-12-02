@@ -318,7 +318,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         final String typeName = dataType.getString("type").toUpperCase();
         switch (typeName) {
         case "DECIMAL":
-            return DataType.createDecimal(dataType.getInt("precision"), dataType.getInt("scale"));
+            return new Decimal(dataType.getInt("precision"), dataType.getInt("scale"));
         case "DOUBLE":
             return DataType.createDouble();
         case "VARCHAR":

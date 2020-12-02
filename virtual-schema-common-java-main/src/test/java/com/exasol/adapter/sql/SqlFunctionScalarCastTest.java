@@ -2,7 +2,6 @@ package com.exasol.adapter.sql;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.when;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.AdapterException;
 import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.Decimal;
 import com.exasol.mocking.MockUtils;
 
 class SqlFunctionScalarCastTest {
@@ -19,7 +19,7 @@ class SqlFunctionScalarCastTest {
 
     @BeforeEach
     void setUp() {
-        this.dataType = DataType.createDecimal(18, 0);
+        this.dataType = new Decimal(18, 0);
         this.argument = new SqlLiteralDouble(20);
         this.sqlFunctionScalarCast = new SqlFunctionScalarCast(this.dataType, this.argument);
     }

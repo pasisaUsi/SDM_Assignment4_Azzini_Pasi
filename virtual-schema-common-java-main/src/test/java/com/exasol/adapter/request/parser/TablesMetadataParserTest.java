@@ -1,36 +1,33 @@
 package com.exasol.adapter.request.parser;
 
-import com.exasol.adapter.metadata.ColumnMetadata;
-import com.exasol.adapter.metadata.TableMetadata;
-import com.exasol.adapter.metadata.datatype.DataType;
+import static com.exasol.adapter.metadata.datatype.ExaCharset.ASCII;
+import static com.exasol.adapter.metadata.datatype.ExaCharset.UTF8;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.equalTo;
 
-import org.junit.jupiter.api.Test;
-
-import javax.json.Json;
-import javax.json.JsonArray;
-import javax.json.JsonReader;
-import java.io.File;
-import java.io.IOException;
-import java.io.StringReader;
-import java.nio.charset.*;
-import java.nio.file.*;
+import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.exasol.adapter.metadata.datatype.DataType.ExaCharset.ASCII;
-import static com.exasol.adapter.metadata.datatype.DataType.ExaCharset.UTF8;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
+import javax.json.*;
+
+import org.junit.jupiter.api.Test;
+
+import com.exasol.adapter.metadata.ColumnMetadata;
+import com.exasol.adapter.metadata.TableMetadata;
+import com.exasol.adapter.metadata.datatype.*;
 
 class TablesMetadataParserTest {
     @Test
     void testParseMetadata() throws IOException {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
-        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(DataType.createDecimal(22, 0))
+        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new Decimal(22, 0)).nullable(true)
+                .identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(new Decimal(18, 0))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(DataType.createDecimal(18, 0))
-                .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(DataType.createVarChar(1000, UTF8))
+        tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(new VarChar(1000, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(
                 ColumnMetadata.builder().name("REQUEST_TIME").adapterNotes("").type(DataType.createTimestamp(false))
@@ -68,7 +65,7 @@ class TablesMetadataParserTest {
 
     private List<TableMetadata> createExpectedTableMetadata() {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
-        tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(DataType.createDecimal(18, 2))
+        tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(new Decimal(18, 2))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(DataType.createDouble())
                 .nullable(true).identity(true).defaultValue("").comment("").build());

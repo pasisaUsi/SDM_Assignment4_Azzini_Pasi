@@ -17,8 +17,10 @@ import javax.json.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.exasol.adapter.metadata.*;
+import com.exasol.adapter.metadata.ColumnMetadata;
+import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.Decimal;
 import com.exasol.adapter.sql.*;
 
 class PushDownSqlParserTest {
@@ -30,9 +32,8 @@ class PushDownSqlParserTest {
     void SetUp() {
         final List<TableMetadata> involvedTables = new ArrayList<>();
         final List<ColumnMetadata> columnMetadatas = new ArrayList<>();
-        this.columnMetadata = ColumnMetadata.builder().name("USER_ID").adapterNotes("")
-                .type(DataType.createDecimal(18, 0)).nullable(true).identity(false).defaultValue("").comment("")
-                .build();
+        this.columnMetadata = ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(new Decimal(18, 0))
+                .nullable(true).identity(false).defaultValue("").comment("").build();
         columnMetadatas.add(this.columnMetadata);
         final TableMetadata tableMetadata = new TableMetadata("CLICKS", "", columnMetadatas, "");
         involvedTables.add(tableMetadata);
@@ -1069,12 +1070,12 @@ class PushDownSqlParserTest {
         final JsonReader reader = Json.createReader(rawRequestStream);
         final List<TableMetadata> tables = new ArrayList<>();
         final List<ColumnMetadata> table1Columns = new ArrayList<>();
-        table1Columns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(DataType.createDecimal(18, 0))
-                .nullable(true).identity(true).defaultValue("0").comment("").build());
+        table1Columns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new Decimal(18, 0)).nullable(true)
+                .identity(true).defaultValue("0").comment("").build());
         tables.add(new TableMetadata("T1", "", table1Columns, ""));
         final List<ColumnMetadata> table2Columns = new ArrayList<>();
-        table2Columns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(DataType.createDecimal(18, 0))
-                .nullable(true).identity(true).defaultValue("0").comment("").build());
+        table2Columns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new Decimal(18, 0)).nullable(true)
+                .identity(true).defaultValue("0").comment("").build());
         tables.add(new TableMetadata("T2", "", table2Columns, ""));
         final PushdownSqlParser parser = PushdownSqlParser.createWithTablesMetadata(tables);
         return (SqlStatementSelect) parser.parseExpression(reader.readObject());

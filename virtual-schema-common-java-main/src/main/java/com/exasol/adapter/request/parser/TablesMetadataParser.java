@@ -153,7 +153,7 @@ public class TablesMetadataParser {
     }
 
     private DataType getDecimalDataType(final JsonObject dataType) {
-        return DataType.createDecimal(dataType.getInt("precision"), dataType.getInt("scale"));
+        return new Decimal(dataType.getInt("precision"), dataType.getInt("scale"));
     }
 
     private static ExaCharset charSetFromString(final String charset) {

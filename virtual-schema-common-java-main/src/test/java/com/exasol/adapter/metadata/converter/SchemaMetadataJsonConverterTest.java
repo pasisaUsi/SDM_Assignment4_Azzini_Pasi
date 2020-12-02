@@ -19,8 +19,7 @@ import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.exasol.adapter.metadata.*;
-import com.exasol.adapter.metadata.datatype.DataType;
-import com.exasol.adapter.metadata.datatype.DataType.ExaCharset;
+import com.exasol.adapter.metadata.datatype.*;
 
 class SchemaMetadataJsonConverterTest {
     private static final SchemaMetadataJsonConverter CONVERTER = SchemaMetadataJsonConverter.getInstance();
@@ -76,7 +75,7 @@ class SchemaMetadataJsonConverterTest {
     void testConvertTypeDecimal() {
         final int precision = 5;
         final int scale = 3;
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createDecimal(precision, scale));
+        final JsonObject jsonObject = CONVERTER.convertType(new Decimal(precision, scale));
         assertAll(() -> assertTypeName(jsonObject, "decimal"),
                 () -> assertThat(jsonObject.getInt("precision"), equalTo(precision)),
                 () -> assertThat(jsonObject.getInt("scale"), equalTo(scale)));
@@ -106,7 +105,7 @@ class SchemaMetadataJsonConverterTest {
         final int bytesize = 16;
         final JsonObject jsonObject = CONVERTER.convertType(DataType.createHashtype(bytesize));
         assertAll(() -> assertTypeName(jsonObject, "hashtype"),
-              () -> assertThat(jsonObject.getInt("bytesize"), equalTo(bytesize)));
+                () -> assertThat(jsonObject.getInt("bytesize"), equalTo(bytesize)));
     }
 
     @Test

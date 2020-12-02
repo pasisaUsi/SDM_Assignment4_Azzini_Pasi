@@ -21,7 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.exasol.ExaMetadata;
 import com.exasol.adapter.metadata.*;
-import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.Decimal;
 import com.exasol.adapter.request.*;
 import com.exasol.adapter.response.*;
 
@@ -69,8 +69,8 @@ class RequestDispatcherTest {
 
     private SchemaMetadata createSchemaMetadata(final String rawRequest) {
         final List<ColumnMetadata> columns = new ArrayList<>();
-        columns.add(ColumnMetadata.builder().name("BAR").adapterNotes("").type(DataType.createDecimal(18, 0))
-                .nullable(true).identity(false).defaultValue("").comment("").build());
+        columns.add(ColumnMetadata.builder().name("BAR").adapterNotes("").type(new Decimal(18, 0)).nullable(true)
+                .identity(false).defaultValue("").comment("").build());
         final List<TableMetadata> tables = new ArrayList<>();
         tables.add(new TableMetadata("FOO", null, columns, ""));
         final SchemaMetadata metadata = new SchemaMetadata(rawRequest, tables);

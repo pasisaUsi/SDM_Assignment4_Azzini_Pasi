@@ -6,12 +6,13 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Double;
 
 class DataTypeTest {
     @Test
     void createDecimal() {
-        final DataType dataType = DataType.createDecimal(10, 2);
+        final DataType dataType = new Decimal(10, 2);
         assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
                 () -> assertThat(dataType.getScale(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("DECIMAL(10, 2)")));
@@ -19,22 +20,22 @@ class DataTypeTest {
 
     @Test
     void createDouble() {
-        final DataType dataType = DataType.createDouble();
+        final DataType dataType = new Double();
         assertThat(dataType.toString(), equalTo("DOUBLE"));
     }
 
     @Test
     void createVarChar() {
-        final DataType dataType = DataType.createVarChar(100, DataType.ExaCharset.UTF8);
-        assertAll(() -> assertThat(dataType.getCharset(), equalTo(DataType.ExaCharset.UTF8)),
+        final DataType dataType = new VarChar(100, ExaCharset.UTF8);
+        assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
                 () -> assertThat(dataType.getSize(), equalTo(100)),
                 () -> assertThat(dataType.toString(), equalTo("VARCHAR(100) UTF8")));
     }
 
     @Test
     void createChar() {
-        final DataType dataType = DataType.createChar(101, DataType.ExaCharset.UTF8);
-        assertAll(() -> assertThat(dataType.getCharset(), equalTo(DataType.ExaCharset.UTF8)),
+        final DataType dataType = new Char(101, ExaCharset.UTF8);
+        assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
                 () -> assertThat(dataType.getSize(), equalTo(101)),
                 () -> assertThat(dataType.toString(), equalTo("CHAR(101) UTF8")));
     }
@@ -113,7 +114,7 @@ class DataTypeTest {
     void createHashtype() {
         final DataType dataType = DataType.createHashtype(16);
         assertAll(() -> assertThat(dataType.getByteSize(), equalTo(16)),
-              () -> assertThat(dataType.toString(), equalTo("HASHTYPE(16 byte)")));
+                () -> assertThat(dataType.toString(), equalTo("HASHTYPE(16 byte)")));
     }
 
     @Test

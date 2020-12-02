@@ -13,6 +13,7 @@ public class Char extends DataType {
     public Char(final ExaCharset charset) {
         this(MAX_EXASOL_CHAR_SIZE, charset);
     }
+    // Dimenticato il toString
 
     @Override
     public int getSize() {

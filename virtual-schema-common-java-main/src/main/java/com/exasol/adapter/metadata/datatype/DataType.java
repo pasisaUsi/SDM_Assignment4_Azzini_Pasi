@@ -82,13 +82,11 @@ public class DataType {
      * @param scale     number of decimal places behind the point
      * @return <code>DECIMAL</code> data type
      */
-    public static DataType createDecimal(final int precision, final int scale) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.DECIMAL;
-        type.precision = precision;
-        type.scale = scale;
-        return type;
-    }
+    /*
+     * public static DataType createDecimal(final int precision, final int scale) { final DataType type = new
+     * DataType(); type.exaDataType = ExaDataType.DECIMAL; type.precision = precision; type.scale = scale; return type;
+     * }
+     */
 
     /**
      * Create a <code>DOUBLE</code> (i.e. double-precision floating point value) data type
