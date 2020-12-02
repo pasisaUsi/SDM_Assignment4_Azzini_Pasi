@@ -43,7 +43,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Check if the listagg function contains distinct.
-     * 
+     *
      * @return true if contains distinct
      */
     public boolean hasDistinct() {
@@ -52,11 +52,11 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Check if the listagg function contains an order by clause.
-     * 
+     *
      * @return true if contains an order by clause
      */
     public boolean hasOrderBy() {
-        return this.orderBy != null && this.orderBy.getExpressions() != null
+        return (this.orderBy != null) && (this.orderBy.getExpressions() != null)
                 && !this.orderBy.getExpressions().isEmpty();
     }
 
@@ -71,7 +71,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Get a function argument.
-     * 
+     *
      * @return argument
      */
     public SqlNode getArgument() {
@@ -80,7 +80,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Get a separator.
-     * 
+     *
      * @return separator
      */
     public SqlLiteralString getSeparator() {
@@ -89,7 +89,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Get an order by clause.
-     * 
+     *
      * @return order by clause
      */
     public SqlOrderBy getOrderBy() {
@@ -98,7 +98,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Get an overflow behavior.
-     * 
+     *
      * @return overflow behavior
      */
     public Behavior getOverflowBehavior() {
@@ -107,7 +107,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
     /**
      * Get a function name.
-     * 
+     *
      * @return function name as a string
      */
     public String getFunctionName() {
@@ -151,7 +151,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Add a distinct.
-         * 
+         *
          * @param distinct distinct
          * @return builder instance for fluent programming
          */
@@ -205,9 +205,9 @@ public class SqlFunctionAggregateListagg extends SqlNode {
             WITH_COUNT, WITHOUT_COUNT;
 
             public static TruncationType parseTruncationType(final String value) {
-                if (value.equalsIgnoreCase("WITH COUNT")) {
+                if ("WITH COUNT".equalsIgnoreCase(value)) {
                     return WITH_COUNT;
-                } else if (value.equalsIgnoreCase("WITHOUT COUNT")) {
+                } else if ("WITHOUT COUNT".equalsIgnoreCase(value)) {
                     return WITHOUT_COUNT;
                 } else {
                     throw new IllegalArgumentException("Illegal value " + value
@@ -225,7 +225,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Create a new instance of {@link Behavior}.
-         * 
+         *
          * @param behaviorType behavior type
          */
         public Behavior(final BehaviorType behaviorType) {
@@ -234,7 +234,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Get a truncation type.
-         * 
+         *
          * @return truncation type
          */
         public String getTruncationType() {
@@ -243,7 +243,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Set a truncation type.
-         * 
+         *
          * @param truncationType truncation type
          */
         public void setTruncationType(final TruncationType truncationType) {
@@ -252,7 +252,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Get a truncation filler.
-         * 
+         *
          * @return truncation filler
          */
         public SqlLiteralString getTruncationFiller() {
@@ -270,7 +270,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Set a truncation filler.
-         * 
+         *
          * @param truncationFiller truncation filler
          */
         public void setTruncationFiller(final SqlLiteralString truncationFiller) {
@@ -279,7 +279,7 @@ public class SqlFunctionAggregateListagg extends SqlNode {
 
         /**
          * Get a behavior type.
-         * 
+         *
          * @return behavior type
          */
         public BehaviorType getBehaviorType() {
