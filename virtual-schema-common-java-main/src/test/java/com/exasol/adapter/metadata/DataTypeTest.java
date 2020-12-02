@@ -27,7 +27,7 @@ class DataTypeTest {
     void createVarChar() {
         final DataType dataType = new VarCharType(100, ExaCharset.UTF8);
         assertAll(() -> assertThat(((VarCharType) dataType).getCharset(), equalTo(ExaCharset.UTF8)),
-                () -> assertThat(((CharType) dataType).getSize(), equalTo(100)),
+                () -> assertThat(((VarCharType) dataType).getSize(), equalTo(100)),
                 () -> assertThat(dataType.toString(), equalTo("VARCHAR(100) UTF8")));
     }
 
@@ -95,10 +95,10 @@ class DataTypeTest {
 
     @Test
     void testCreateMaximumSizeVarChar() {
-        final DataType dataType = new CharType(ExaCharset.ASCII);
+        final DataType dataType = new VarCharType(ExaCharset.ASCII);
         assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.VARCHAR)),
-                () -> assertThat(((CharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
-                () -> assertThat(((CharType) dataType).getCharset(), equalTo(ExaCharset.ASCII)));
+                () -> assertThat(((VarCharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
+                () -> assertThat(((VarCharType) dataType).getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
     @Test

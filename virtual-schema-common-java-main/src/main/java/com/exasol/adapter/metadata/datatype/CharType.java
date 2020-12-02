@@ -25,7 +25,7 @@ public class CharType extends DataType {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("CHAR(%d)", this.size));
+        builder.append(String.format("CHAR(%d) ", this.size));
         builder.append(this.charset.toString());
         return builder.toString();
     }
