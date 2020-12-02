@@ -13,7 +13,7 @@ class DataTypeTest {
     void createDecimal() {
         final DataType dataType = new DecimalType(10, 2);
         assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
-                () -> assertThat(dataType.getScale(), equalTo(2)),
+                () -> assertThat(((DecimalType) dataType).getScale(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("DECIMAL(10, 2)")));
     }
 
@@ -27,7 +27,7 @@ class DataTypeTest {
     void createVarChar() {
         final DataType dataType = new VarCharType(100, ExaCharset.UTF8);
         assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
-                () -> assertThat(dataType.getSize(), equalTo(100)),
+                () -> assertThat(((CharType) dataType).getSize(), equalTo(100)),
                 () -> assertThat(dataType.toString(), equalTo("VARCHAR(100) UTF8")));
     }
 
@@ -35,7 +35,7 @@ class DataTypeTest {
     void createChar() {
         final DataType dataType = new CharType(101, ExaCharset.UTF8);
         assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
-                () -> assertThat(dataType.getSize(), equalTo(101)),
+                () -> assertThat(((CharType) dataType).getSize(), equalTo(101)),
                 () -> assertThat(dataType.toString(), equalTo("CHAR(101) UTF8")));
     }
 
@@ -97,7 +97,7 @@ class DataTypeTest {
     void testCreateMaximumSizeVarChar() {
         final DataType dataType = new CharType(ExaCharset.ASCII);
         assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.VARCHAR)),
-                () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
+                () -> assertThat(((CharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
                 () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
@@ -105,7 +105,7 @@ class DataTypeTest {
     void testCreateMaximumSizeChar() {
         final DataType dataType = new CharType(ExaCharset.ASCII);
         assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.CHAR)),
-                () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_CHAR_SIZE)),
+                () -> assertThat(((CharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_CHAR_SIZE)),
                 () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
