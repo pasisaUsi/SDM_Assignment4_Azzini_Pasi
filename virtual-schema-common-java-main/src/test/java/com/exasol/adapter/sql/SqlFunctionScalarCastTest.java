@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.AdapterException;
 import com.exasol.adapter.metadata.datatype.DataType;
-import com.exasol.adapter.metadata.datatype.Decimal;
+import com.exasol.adapter.metadata.datatype.DecimalType;
 import com.exasol.mocking.MockUtils;
 
 class SqlFunctionScalarCastTest {
@@ -19,7 +19,7 @@ class SqlFunctionScalarCastTest {
 
     @BeforeEach
     void setUp() {
-        this.dataType = new Decimal(18, 0);
+        this.dataType = new DecimalType(18, 0);
         this.argument = new SqlLiteralDouble(20);
         this.sqlFunctionScalarCast = new SqlFunctionScalarCast(this.dataType, this.argument);
     }

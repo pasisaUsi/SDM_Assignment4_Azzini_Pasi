@@ -10,7 +10,7 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.Double;
+import com.exasol.adapter.metadata.datatype.DoubleType;
 
 /**
  * This class provides a parser for table metadata
@@ -112,7 +112,7 @@ public class TablesMetadataParser {
 
     private DataType getGeometryDataType(final JsonObject dataType) {
         final int srid = dataType.getInt("srid");
-        return new Geometry(srid);
+        return new GeometryType(srid);
     }
 
     private DataType getIntervalDataType(final JsonObject dataType) {
@@ -120,41 +120,41 @@ public class TablesMetadataParser {
         final IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
         if (intervalType == IntervalType.DAY_TO_SECOND) {
             final int fraction = dataType.getInt("fraction", 3);
-            return new IntervalDaySecond(precision, fraction);
+            return new IntervalDaySecondType(precision, fraction);
         } else {
-            return DataType.createIntervalYearMonth(precision);
+            return new IntervalYearMonthType(precision);
         }
     }
 
     private DataType getTimestampDataType(final JsonObject dataType) {
         final boolean withLocalTimezone = dataType.getBoolean("withLocalTimeZone", false);
-        return new TimeStamp(withLocalTimezone);
+        return new TimeStampType(withLocalTimezone);
     }
 
     private DataType getDateDataType() {
-        return new Date();
+        return new DateType();
     }
 
     private DataType getBooleanDataType() {
-        return new Bool();
+        return new BoolType();
     }
 
     private DataType getCharDataType(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return new Char(dataType.getInt("size"), charSetFromString(charSet));
+        return new CharType(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getVarcharDataType(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return new VarChar(dataType.getInt("size"), charSetFromString(charSet));
+        return new VarCharType(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getDoubleDataType() {
-        return new Double();
+        return new DoubleType();
     }
 
     private DataType getDecimalDataType(final JsonObject dataType) {
-        return new Decimal(dataType.getInt("precision"), dataType.getInt("scale"));
+        return new DecimalType(dataType.getInt("precision"), dataType.getInt("scale"));
     }
 
     private static ExaCharset charSetFromString(final String charset) {

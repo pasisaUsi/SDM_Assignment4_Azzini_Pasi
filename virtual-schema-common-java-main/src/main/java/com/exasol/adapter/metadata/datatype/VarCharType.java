@@ -1,16 +1,16 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class VarChar extends DataType {
+public class VarCharType extends DataType {
     private final int size;
     private final ExaCharset charset;
 
-    public VarChar(final int size, final ExaCharset charset) {
+    public VarCharType(final int size, final ExaCharset charset) {
         this.exaDataType = ExaDataType.VARCHAR;
         this.size = size;
         this.charset = charset;
     }
 
-    public VarChar(final ExaCharset charset) {
+    public VarCharType(final ExaCharset charset) {
         this(MAX_EXASOL_VARCHAR_SIZE, charset);
     }
 

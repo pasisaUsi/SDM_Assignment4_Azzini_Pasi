@@ -8,8 +8,7 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.Date;
-import com.exasol.adapter.metadata.datatype.Double;
+import com.exasol.adapter.metadata.datatype.DateType;
 import com.exasol.adapter.sql.*;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.KeyUniquenessConstraint;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.TypeConstraints;
@@ -320,17 +319,17 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         final String typeName = dataType.getString("type").toUpperCase();
         switch (typeName) {
         case "DECIMAL":
-            return new Decimal(dataType.getInt("precision"), dataType.getInt("scale"));
+            return new DecimalType(dataType.getInt("precision"), dataType.getInt("scale"));
         case "DOUBLE":
-            return new Double();
+            return new DoubleType();
         case "VARCHAR":
             return getVarchar(dataType);
         case "CHAR":
             return getChar(dataType);
         case "BOOLEAN":
-            return new Bool();
+            return new BoolType();
         case "DATE":
-            return new Date();
+            return new DateType();
         case "TIMESTAMP":
             return getTimestamp(dataType);
         case "INTERVAL":
@@ -351,17 +350,17 @@ public final class PushdownSqlParser extends AbstractRequestParser {
 
     private DataType getVarchar(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return new VarChar(dataType.getInt("size"), charSetFromString(charSet));
+        return new VarCharType(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getChar(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return new Char(dataType.getInt("size"), charSetFromString(charSet));
+        return new CharType(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getTimestamp(final JsonObject dataType) {
         final boolean withLocalTimezone = dataType.getBoolean("withLocalTimeZone", false);
-        return new TimeStamp(withLocalTimezone);
+        return new TimeStampType(withLocalTimezone);
     }
 
     private DataType getInterval(final JsonObject dataType) {
@@ -370,17 +369,17 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         final IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
         if (intervalType == IntervalType.DAY_TO_SECOND) {
             final int fraction = dataType.getInt("fraction", 3);
-            type = new IntervalDaySecond(precision, fraction);
+            type = new IntervalDaySecondType(precision, fraction);
         } else {
             assert intervalType == IntervalType.YEAR_TO_MONTH;
-            type = DataType.createIntervalYearMonth(precision);
+            type = new IntervalYearMonthType(precision);
         }
         return type;
     }
 
     private DataType getGeometry(final JsonObject dataType) {
         final int srid = dataType.getInt("srid");
-        return new Geometry(srid);
+        return new GeometryType(srid);
     }
 
     private static ExaCharset charSetFromString(final String charset) {

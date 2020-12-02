@@ -9,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.AdapterException;
 import com.exasol.adapter.metadata.ColumnMetadata;
-import com.exasol.adapter.metadata.datatype.Bool;
+import com.exasol.adapter.metadata.datatype.BoolType;
 import com.exasol.mocking.MockUtils;
 
 class SqlColumnTest {
@@ -21,7 +21,7 @@ class SqlColumnTest {
 
     @BeforeEach
     void setUp() {
-        this.columnMetadata = ColumnMetadata.builder().name(METADATA_TEST_NAME).type(new Bool()).build();
+        this.columnMetadata = ColumnMetadata.builder().name(METADATA_TEST_NAME).type(new BoolType()).build();
         this.sqlColumn = new SqlColumn(ID, this.columnMetadata, TABLE_NAME);
     }
 

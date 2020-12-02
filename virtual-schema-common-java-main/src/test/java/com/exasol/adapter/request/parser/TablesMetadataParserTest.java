@@ -18,19 +18,19 @@ import org.junit.jupiter.api.Test;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.Double;
+import com.exasol.adapter.metadata.datatype.DoubleType;
 
 class TablesMetadataParserTest {
     @Test
     void testParseMetadata() throws IOException {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
-        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new Decimal(22, 0)).nullable(true)
+        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new DecimalType(22, 0)).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(new Decimal(18, 0))
+        tableColumns.add(ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(new DecimalType(18, 0))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(new VarChar(1000, UTF8))
+        tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(new VarCharType(1000, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("REQUEST_TIME").adapterNotes("").type(new TimeStamp(false))
+        tableColumns.add(ColumnMetadata.builder().name("REQUEST_TIME").adapterNotes("").type(new TimeStampType(false))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         final List<TableMetadata> expectedInvolvedTablesMetadata = new ArrayList<>();
         expectedInvolvedTablesMetadata.add(new TableMetadata("CLICKS", "", tableColumns, ""));
@@ -65,46 +65,44 @@ class TablesMetadataParserTest {
 
     private List<TableMetadata> createExpectedTableMetadata() {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
-        tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(new Decimal(18, 2))
+        tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(new DecimalType(18, 2))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new Double()).nullable(true)
+        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new DoubleType()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_1").adapterNotes("")
-                .type(new VarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
+                .type(new VarCharType(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_2").adapterNotes("")
-                .type(new VarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
+                .type(new VarCharType(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_ASCII").adapterNotes("")
-                .type(new VarChar(10000, ASCII)).nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_1").adapterNotes("").type(new Char(3, UTF8))
+                .type(new VarCharType(10000, ASCII)).nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_1").adapterNotes("").type(new CharType(3, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("").type(new Char(3, UTF8))
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("").type(new CharType(3, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_ASCII").adapterNotes("").type(new Char(3, ASCII))
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_ASCII").adapterNotes("").type(new CharType(3, ASCII))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_DATE").adapterNotes("").type(new Date()).nullable(true)
+        tableColumns.add(ColumnMetadata.builder().name("C_DATE").adapterNotes("").type(new DateType()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_1").adapterNotes("").type(new TimeStamp(false))
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_1").adapterNotes("").type(new TimeStampType(false))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_2").adapterNotes("").type(new TimeStamp(false))
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_2").adapterNotes("").type(new TimeStampType(false))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_3").adapterNotes("").type(new TimeStamp(true))
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_3").adapterNotes("").type(new TimeStampType(true))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_BOOLEAN").adapterNotes("").type(new Bool()).nullable(true)
+        tableColumns.add(ColumnMetadata.builder().name("C_BOOLEAN").adapterNotes("").type(new BoolType()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(new Geometry(1))
+        tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(new GeometryType(1))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_HASHTYPE").adapterNotes("").type(DataType.createHashtype(16))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_DS_1").adapterNotes("")
-                .type(new IntervalDaySecond(2, 3)).nullable(true).identity(true).defaultValue("").comment("").build());
+                .type(new IntervalDaySecondType(2, 3)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_DS_2").adapterNotes("")
-                .type(new IntervalDaySecond(3, 4)).nullable(true).identity(true).defaultValue("").comment("").build());
+                .type(new IntervalDaySecondType(3, 4)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_YM_1").adapterNotes("")
-                .type(DataType.createIntervalYearMonth(2)).nullable(true).identity(true).defaultValue("").comment("")
-                .build());
+                .type(new IntervalYearMonthType(2)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_YM_2").adapterNotes("")
-                .type(DataType.createIntervalYearMonth(3)).nullable(true).identity(true).defaultValue("").comment("")
-                .build());
+                .type(new IntervalYearMonthType(3)).nullable(true).identity(true).defaultValue("").comment("").build());
         final List<TableMetadata> expectedInvolvedTablesMetadata = new ArrayList<>();
         expectedInvolvedTablesMetadata.add(new TableMetadata("T1", "", tableColumns, ""));
         return expectedInvolvedTablesMetadata;

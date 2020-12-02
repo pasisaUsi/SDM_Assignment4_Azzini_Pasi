@@ -1,8 +1,8 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class Double extends DataType {
+public class DoubleType extends DataType {
 
-    public Double() {
+    public DoubleType() {
         this.exaDataType = ExaDataType.DOUBLE;
     }
 

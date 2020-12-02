@@ -1,8 +1,8 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class Date extends DataType {
+public class DateType extends DataType {
 
-    public Date() {
+    public DateType() {
         this.exaDataType = ExaDataType.DATE;
     }
 

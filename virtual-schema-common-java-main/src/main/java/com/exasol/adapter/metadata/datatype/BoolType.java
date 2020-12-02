@@ -1,8 +1,8 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class Bool extends DataType {
+public class BoolType extends DataType {
 
-    public Bool() {
+    public BoolType() {
         this.exaDataType = ExaDataType.BOOLEAN;
     }
 

@@ -17,8 +17,8 @@ class TableMetadataTest {
     @BeforeEach
     void setUp() {
         final List<ColumnMetadata> columns = new ArrayList<>();
-        columns.add(ColumnMetadata.builder().name("C1").type(new Bool()).build());
-        columns.add(ColumnMetadata.builder().name("C2").type(new VarChar(70, ExaCharset.ASCII)).build());
+        columns.add(ColumnMetadata.builder().name("C1").type(new BoolType()).build());
+        columns.add(ColumnMetadata.builder().name("C2").type(new VarCharType(70, ExaCharset.ASCII)).build());
         final String name = "FooBar";
         this.tableMetadata = new TableMetadata(name, "", columns, "");
     }

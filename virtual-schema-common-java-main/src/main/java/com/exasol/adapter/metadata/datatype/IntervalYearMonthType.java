@@ -1,24 +1,18 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class IntervalDaySecond extends DataType {
+public class IntervalYearMonthType extends DataType {
     private final int precision;
-    private final int fraction;
     private final IntervalType intervalType;
 
-    public IntervalDaySecond(final int precision, final int fraction) {
+    public IntervalYearMonthType(final int precision) {
         this.exaDataType = ExaDataType.INTERVAL;
         this.precision = precision;
-        this.fraction = fraction;
-        this.intervalType = IntervalType.DAY_TO_SECOND;
+        this.intervalType = IntervalType.YEAR_TO_MONTH;
     }
 
     @Override
     public int getPrecision() {
         return this.precision;
-    }
-
-    public int getFraction() {
-        return this.fraction;
     }
 
     @Override

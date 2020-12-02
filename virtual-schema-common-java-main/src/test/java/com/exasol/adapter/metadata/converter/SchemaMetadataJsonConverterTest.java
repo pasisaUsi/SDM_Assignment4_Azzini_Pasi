@@ -20,7 +20,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.exasol.adapter.metadata.*;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.Double;
+import com.exasol.adapter.metadata.datatype.DoubleType;
 
 class SchemaMetadataJsonConverterTest {
     private static final SchemaMetadataJsonConverter CONVERTER = SchemaMetadataJsonConverter.getInstance();
@@ -59,12 +59,12 @@ class SchemaMetadataJsonConverterTest {
                 + "}";
         final List<TableMetadata> tables = new ArrayList<>();
         final List<ColumnMetadata> columnsA = new ArrayList<>();
-        columnsA.add(new ColumnMetadata.Builder().name("column_A1").comment("comment A1").type(new Double())
+        columnsA.add(new ColumnMetadata.Builder().name("column_A1").comment("comment A1").type(new DoubleType())
                 .adapterNotes("notes A1").nullable(false).build());
-        columnsA.add(new ColumnMetadata.Builder().name("column_A2").type(new Date()).defaultValue("default A2")
+        columnsA.add(new ColumnMetadata.Builder().name("column_A2").type(new DateType()).defaultValue("default A2")
                 .identity(true).build());
         final List<ColumnMetadata> columnsB = new ArrayList<>();
-        columnsB.add(new ColumnMetadata.Builder().name("COLUMN_B1").type(new Bool()).build());
+        columnsB.add(new ColumnMetadata.Builder().name("COLUMN_B1").type(new BoolType()).build());
         tables.add(new TableMetadata("table_A", "notes A", columnsA, "comment A"));
         tables.add(new TableMetadata("TABLE_B", null, columnsB, null));
         final SchemaMetadata schemaMetadata = new SchemaMetadata(SCHEMA_NAME, tables);
@@ -76,7 +76,7 @@ class SchemaMetadataJsonConverterTest {
     void testConvertTypeDecimal() {
         final int precision = 5;
         final int scale = 3;
-        final JsonObject jsonObject = CONVERTER.convertType(new Decimal(precision, scale));
+        final JsonObject jsonObject = CONVERTER.convertType(new DecimalType(precision, scale));
         assertAll(() -> assertTypeName(jsonObject, "decimal"),
                 () -> assertThat(jsonObject.getInt("precision"), equalTo(precision)),
                 () -> assertThat(jsonObject.getInt("scale"), equalTo(scale)));
@@ -88,7 +88,7 @@ class SchemaMetadataJsonConverterTest {
 
     @Test
     void testConvertTypeTimestamp() {
-        final JsonObject jsonObject = CONVERTER.convertType(new TimeStamp(true));
+        final JsonObject jsonObject = CONVERTER.convertType(new TimeStampType(true));
         assertAll(() -> assertTypeName(jsonObject, "timestamp"),
                 () -> assertThat(jsonObject.getBoolean("withLocalTimeZone"), equalTo(true)));
     }
@@ -96,7 +96,7 @@ class SchemaMetadataJsonConverterTest {
     @Test
     void testConvertTypeGeometry() {
         final int srid = 2;
-        final JsonObject jsonObject = CONVERTER.convertType(new Geometry(srid));
+        final JsonObject jsonObject = CONVERTER.convertType(new GeometryType(srid));
         assertAll(() -> assertTypeName(jsonObject, "geometry"),
                 () -> assertThat(jsonObject.getInt("srid"), equalTo(srid)));
     }
@@ -113,7 +113,7 @@ class SchemaMetadataJsonConverterTest {
     void testConvertTypeIntervalDayToSecond() {
         final int precision = 2;
         final int fraction = 3;
-        final JsonObject jsonObject = CONVERTER.convertType(new IntervalDaySecond(precision, fraction));
+        final JsonObject jsonObject = CONVERTER.convertType(new IntervalDaySecondType(precision, fraction));
         assertAll(() -> assertTypeName(jsonObject, "interval"),
                 () -> assertThat(jsonObject.getString("fromTo"), equalTo("DAY TO SECONDS")),
                 () -> assertThat(jsonObject.getInt("precision"), equalTo(precision)),
@@ -123,7 +123,7 @@ class SchemaMetadataJsonConverterTest {
     @Test
     void testConvertTypeIntervalYearToMonths() {
         final int precision = 2;
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createIntervalYearMonth(precision));
+        final JsonObject jsonObject = CONVERTER.convertType(new IntervalYearMonthType(precision));
         assertAll(() -> assertTypeName(jsonObject, "interval"),
                 () -> assertThat(jsonObject.getString("fromTo"), equalTo("YEAR TO MONTH")),
                 () -> assertThat(jsonObject.getInt("precision"), equalTo(precision)));
@@ -132,7 +132,7 @@ class SchemaMetadataJsonConverterTest {
     @CsvSource({ "42,ASCII,ASCII", "3000,UTF8,UTF8" })
     @ParameterizedTest
     void testConvertTypeVarChar(final int size, final ExaCharset characterSet, final String characterSetName) {
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createVarChar(size, characterSet));
+        final JsonObject jsonObject = CONVERTER.convertType(new VarCharType(size, characterSet));
         assertAll(() -> assertTypeName(jsonObject, "varchar"),
                 () -> assertThat(jsonObject.getInt("size"), equalTo(size)),
                 () -> assertThat(jsonObject.getString("characterSet"), equalTo(characterSetName)));
@@ -141,7 +141,7 @@ class SchemaMetadataJsonConverterTest {
     @Test
     void testConvertTypeUnsupportedThrowsException() {
         final DataType dataType = Mockito.mock(DataType.class);
-        when(dataType.getExaDataType()).thenReturn(DataType.ExaDataType.UNSUPPORTED);
+        when(dataType.getExaDataType()).thenReturn(ExaDataType.UNSUPPORTED);
         assertThrows(IllegalArgumentException.class, () -> CONVERTER.convertType(dataType));
     }
 }

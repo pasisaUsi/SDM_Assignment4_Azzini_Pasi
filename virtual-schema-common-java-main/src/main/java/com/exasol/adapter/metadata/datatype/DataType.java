@@ -26,22 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create an <code>INTERVAL YEAR TO MONTH</code> data type
-     *
-     * @param precision number of years the interval can span
-     * @return <code>INTERVAL YEAR TO MONTH</code> data type
-     * @see <a href="https://docs.exasol.com/sql_references/data_types/datatypedetails.htm?Highlight=interval">Interval
-     *      data type (Exasol documentation)</a>
-     */
-    public static DataType createIntervalYearMonth(final int precision) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.INTERVAL;
-        type.intervalType = IntervalType.YEAR_TO_MONTH;
-        type.precision = precision;
-        return type;
-    }
-
-    /**
      * Create a <code>HASHTYPE</code> data type
      *
      * @param byteSize size in bytes
