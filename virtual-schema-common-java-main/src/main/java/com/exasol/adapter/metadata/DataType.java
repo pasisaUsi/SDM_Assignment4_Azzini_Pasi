@@ -361,8 +361,7 @@ public class DataType {
             appendHashtype(builder);
             break;
         default:
-            throw new IllegalArgumentException("Unexpected data type \"" + this.exaDataType
-                    + "\" encountered trying to serialize schema metadata.");
+            throw new IllegalArgumentException("Unexpected data type \"" + this.exaDataType);
         }
         return builder.toString();
     }
