@@ -5,6 +5,7 @@ public class IntervalDaySecondType extends IntervalDataType {
 
     public IntervalDaySecondType(final int precision, final int fraction) {
         super(precision);
+        this.intervalType = IntervalType.DAY_TO_SECOND;
         this.fraction = fraction;
     }
 
