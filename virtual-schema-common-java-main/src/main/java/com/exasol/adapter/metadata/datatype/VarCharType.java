@@ -29,4 +29,35 @@ public class VarCharType extends DataType {
         builder.append(this.charset.toString());
         return builder.toString();
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = super.hashCode();
+        result = (prime * result) + ((this.charset == null) ? 0 : this.charset.hashCode());
+        result = (prime * result) + this.size;
+        return result;
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final VarCharType other = (VarCharType) obj;
+        if (this.charset != other.charset) {
+            return false;
+        }
+        if (this.size != other.size) {
+            return false;
+        }
+        return true;
+    }
+
 }

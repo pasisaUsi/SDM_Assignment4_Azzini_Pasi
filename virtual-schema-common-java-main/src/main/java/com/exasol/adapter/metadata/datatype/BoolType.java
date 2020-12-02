@@ -8,8 +8,28 @@ public class BoolType extends DataType {
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return null;
+        final StringBuilder builder = new StringBuilder();
+        builder.append("BOOLEAN");
+        return builder.toString();
+    }
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    @Override
+    public boolean equals(final Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (!super.equals(obj)) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        return true;
     }
 
 }
