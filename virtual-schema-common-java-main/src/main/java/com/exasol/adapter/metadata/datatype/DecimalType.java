@@ -17,7 +17,6 @@ public class DecimalType extends DataType {
         return this.precision;
     }
 
-    @Override
     public int getScale() {
         return this.scale;
     }

@@ -44,68 +44,12 @@ public class DataType {
     }
 
     /**
-     * Get the scale
-     *
-     * @return scale
-     */
-    public int getScale() {
-        return this.scale;
-    }
-
-    /**
-     * Get the size
-     *
-     * @return size
-     */
-    public int getSize() {
-        return this.size;
-    }
-
-    /**
-     * Get the character set
-     *
-     * @return character set
-     */
-    public ExaCharset getCharset() {
-        return this.charset;
-    }
-
-    /**
-     * Check whether the timestamp uses the local time zone
-     *
-     * @return <code>true</code> if the timestamp uses the local time zone
-     */
-    public boolean isWithLocalTimezone() {
-        return this.withLocalTimezone;
-    }
-
-    /**
-     * Get the Spatial Reference System Identifier (SRID) that was used to encode the geometry
-     *
-     * @return SRID
-     * @see <a href="https://en.wikipedia.org/wiki/Spatial_reference_system#Identifier">Spatial Reference System
-     *      Identifier (Wikipedia)</a>
-     */
-    public int getGeometrySrid() {
-        return this.geometrySrid;
-    }
-
-    /**
      * Get the interval type
      *
      * @return interval type
      */
     public IntervalType getIntervalType() {
         return this.intervalType;
-    }
-
-    /**
-     * Get the interval fraction
-     *
-     * @return interval fraction
-     */
-    public int getIntervalFraction() {
-        return this.intervalFraction;
     }
 
     /**

@@ -42,14 +42,14 @@ class DataTypeTest {
     @Test
     void createTimestampWithLocalTimezone() {
         final DataType dataType = new TimeStampType(true);
-        assertAll(() -> assertTrue(dataType.isWithLocalTimezone()),
+        assertAll(() -> assertTrue(((TimeStampType) dataType).isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP WITH LOCAL TIME ZONE")));
     }
 
     @Test
     void createTimestampWithoutLocalTimezone() {
         final DataType dataType = new TimeStampType(false);
-        assertAll(() -> assertFalse(dataType.isWithLocalTimezone()),
+        assertAll(() -> assertFalse(((TimeStampType) dataType).isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP")));
     }
 
@@ -74,7 +74,7 @@ class DataTypeTest {
     @Test
     void createGeometry() {
         final DataType dataType = new GeometryType(4);
-        assertAll(() -> assertThat(dataType.getGeometrySrid(), equalTo(4)),
+        assertAll(() -> assertThat(((GeometryType) dataType).getGeometrySrid(), equalTo(4)),
                 () -> assertThat(dataType.toString(), equalTo("GEOMETRY(4)")));
     }
 
@@ -82,7 +82,7 @@ class DataTypeTest {
     void createIntervalDaySecond() {
         final DataType dataType = new IntervalDaySecondType(10, 2);
         assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
-                () -> assertThat(dataType.getIntervalFraction(), equalTo(2)),
+                () -> assertThat(((IntervalDaySecondType) dataType).getIntervalFraction(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL DAY (10) TO SECOND (2)")));
     }
 
@@ -112,7 +112,7 @@ class DataTypeTest {
     @Test
     void createHashtype() {
         final DataType dataType = new HashType(16);
-        assertAll(() -> assertThat(dataType.getByteSize(), equalTo(16)),
+        assertAll(() -> assertThat(((HashType) dataType).getByteSize(), equalTo(16)),
                 () -> assertThat(dataType.toString(), equalTo("HASHTYPE(16 byte)")));
     }
 

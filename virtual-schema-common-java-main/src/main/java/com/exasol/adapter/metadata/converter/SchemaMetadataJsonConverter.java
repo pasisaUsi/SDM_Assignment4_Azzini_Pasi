@@ -118,16 +118,16 @@ public final class SchemaMetadataJsonConverter {
             typeAsJson.add("characterSet", getCharacterSetName(((CharType) dataType).getCharset()));
             break;
         case TIMESTAMP:
-            typeAsJson.add("withLocalTimeZone", dataType.isWithLocalTimezone());
+            typeAsJson.add("withLocalTimeZone", ((TimeStampType) dataType).isWithLocalTimezone());
             break;
         case GEOMETRY:
-            typeAsJson.add("srid", dataType.getGeometrySrid());
+            typeAsJson.add("srid", ((GeometryType) dataType).getGeometrySrid());
             break;
         case INTERVAL:
             addIntervalToRoot(dataType, typeAsJson);
             break;
         case HASHTYPE:
-            typeAsJson.add("bytesize", dataType.getByteSize());
+            typeAsJson.add("bytesize", ((HashType) dataType).getByteSize());
             break;
         case DOUBLE: // falling through intentionally
         case DATE:
@@ -144,7 +144,7 @@ public final class SchemaMetadataJsonConverter {
         dataTypeAsJson.add("fromTo", intervalTypeAsString(dataType.getIntervalType()));
         dataTypeAsJson.add("precision", dataType.getPrecision());
         if (dataType.getIntervalType() == IntervalType.DAY_TO_SECOND) {
-            dataTypeAsJson.add("fraction", dataType.getIntervalFraction());
+            dataTypeAsJson.add("fraction", ((IntervalDaySecondType) dataType).getIntervalFraction());
         }
     }
 

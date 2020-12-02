@@ -8,7 +8,6 @@ public class TimeStampType extends DataType {
         this.withLocalTimezone = withLocalTimezone;
     }
 
-    @Override
     public boolean isWithLocalTimezone() {
         return this.withLocalTimezone;
     }

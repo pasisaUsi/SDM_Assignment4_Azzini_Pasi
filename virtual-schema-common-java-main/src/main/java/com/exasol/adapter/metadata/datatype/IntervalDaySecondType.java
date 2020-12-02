@@ -17,7 +17,7 @@ public class IntervalDaySecondType extends DataType {
         return this.precision;
     }
 
-    public int getFraction() {
+    public int getIntervalFraction() {
         return this.fraction;
     }
 

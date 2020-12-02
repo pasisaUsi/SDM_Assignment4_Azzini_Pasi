@@ -15,12 +15,10 @@ public class CharType extends DataType {
     }
     // Dimenticato il toString
 
-    @Override
     public int getSize() {
         return this.size;
     }
 
-    @Override
     public ExaCharset getCharset() {
         return this.charset;
     }

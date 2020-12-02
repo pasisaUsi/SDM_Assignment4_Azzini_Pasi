@@ -14,12 +14,10 @@ public class VarCharType extends DataType {
         this(MAX_EXASOL_VARCHAR_SIZE, charset);
     }
 
-    @Override
     public int getSize() {
         return this.size;
     }
 
-    @Override
     public ExaCharset getCharset() {
         return this.charset;
     }

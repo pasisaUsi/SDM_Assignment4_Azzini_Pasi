@@ -8,7 +8,6 @@ public class GeometryType extends DataType {
         this.geometrySrid = geometrySrid;
     }
 
-    @Override
     public int getGeometrySrid() {
         return this.geometrySrid;
     }
