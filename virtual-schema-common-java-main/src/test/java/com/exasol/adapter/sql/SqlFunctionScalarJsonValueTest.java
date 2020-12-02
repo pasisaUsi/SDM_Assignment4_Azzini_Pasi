@@ -12,7 +12,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.exasol.adapter.AdapterException;
-import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.ExaCharset;
+import com.exasol.adapter.metadata.datatype.VarCharType;
 import com.exasol.mocking.MockUtils;
 
 @ExtendWith(MockitoExtension.class)
@@ -31,7 +32,7 @@ class SqlFunctionScalarJsonValueTest {
         this.errorBehavior = new SqlFunctionScalarJsonValue.Behavior(SqlFunctionScalarJsonValue.BehaviorType.DEFAULT,
                 Optional.of(new SqlLiteralString("*** error ***")));
         this.sqlFunctionScalarJsonValue = new SqlFunctionScalarJsonValue(ScalarFunction.JSON_VALUE, arguments,
-                DataType.createVarChar(1000, DataType.ExaCharset.UTF8), this.emptyBehavior, this.errorBehavior);
+                new VarCharType(1000, ExaCharset.UTF8), this.emptyBehavior, this.errorBehavior);
     }
 
     @Test
@@ -54,7 +55,7 @@ class SqlFunctionScalarJsonValueTest {
     @Test
     void testGetReturningDataType() {
         assertThat(this.sqlFunctionScalarJsonValue.getReturningDataType(),
-                equalTo(DataType.createVarChar(1000, DataType.ExaCharset.UTF8)));
+                equalTo(new VarCharType(1000, ExaCharset.UTF8)));
     }
 
     @Test
