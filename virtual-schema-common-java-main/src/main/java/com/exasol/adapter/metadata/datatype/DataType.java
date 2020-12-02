@@ -59,13 +59,10 @@ public class DataType {
      * @param charset character set to be used when creating the data type
      * @return <code>CHAR</code> type
      */
-    public static DataType createChar(final int size, final ExaCharset charset) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.CHAR;
-        type.size = size;
-        type.charset = charset;
-        return type;
-    }
+    /*
+     * public static DataType createChar(final int size, final ExaCharset charset) { final DataType type = new
+     * DataType(); type.exaDataType = ExaDataType.CHAR; type.size = size; type.charset = charset; return type; }
+     */
 
     /**
      * Create a <code>CHAR</code> data type with the maximum size supported by Exasol
@@ -73,9 +70,10 @@ public class DataType {
      * @param charset character set to be used when creating the data type
      * @return <code>CHAR</code> type
      */
-    public static DataType createMaximumSizeChar(final ExaCharset charset) {
-        return createChar(MAX_EXASOL_CHAR_SIZE, charset);
-    }
+    /*
+     * public static DataType createMaximumSizeChar(final ExaCharset charset) { return createChar(MAX_EXASOL_CHAR_SIZE,
+     * charset); }
+     */
 
     /**
      * Create a <code>DECIMAL</code> (i.e. fixed point value) data type

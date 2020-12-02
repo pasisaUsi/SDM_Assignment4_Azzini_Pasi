@@ -354,7 +354,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
 
     private DataType getChar(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return DataType.createChar(dataType.getInt("size"), charSetFromString(charSet));
+        return new Char(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getTimestamp(final JsonObject dataType) {
