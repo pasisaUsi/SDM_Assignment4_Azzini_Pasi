@@ -1,17 +1,13 @@
 package com.exasol.adapter.request.parser;
 
-import com.exasol.adapter.metadata.ColumnMetadata;
-import com.exasol.adapter.metadata.DataType;
-import com.exasol.adapter.metadata.TableMetadata;
+import static com.exasol.adapter.request.parser.RequestParserConstants.*;
 
-import javax.json.JsonArray;
-import javax.json.JsonObject;
-import javax.json.JsonString;
-import javax.json.JsonValue;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.exasol.adapter.request.parser.RequestParserConstants.*;
+import javax.json.*;
+
+import com.exasol.adapter.metadata.*;
 
 /**
  * This class provides a parser for table metadata
@@ -159,9 +155,9 @@ public class TablesMetadataParser {
     }
 
     private static DataType.ExaCharset charSetFromString(final String charset) {
-        if (charset.equals("UTF8")) {
+        if ("UTF8".equals(charset)) {
             return DataType.ExaCharset.UTF8;
-        } else if (charset.equals("ASCII")) {
+        } else if ("ASCII".equals(charset)) {
             return DataType.ExaCharset.ASCII;
         } else {
             throw new RequestParserException("Unsupported charset encountered: " + charset);
@@ -169,9 +165,9 @@ public class TablesMetadataParser {
     }
 
     private static DataType.IntervalType intervalTypeFromString(final String intervalType) {
-        if (intervalType.equals("DAY TO SECONDS")) {
+        if ("DAY TO SECONDS".equals(intervalType)) {
             return DataType.IntervalType.DAY_TO_SECOND;
-        } else if (intervalType.equals("YEAR TO MONTH")) {
+        } else if ("YEAR TO MONTH".equals(intervalType)) {
             return DataType.IntervalType.YEAR_TO_MONTH;
         } else {
             throw new RequestParserException("Unsupported interval data type encountered: " + intervalType);
