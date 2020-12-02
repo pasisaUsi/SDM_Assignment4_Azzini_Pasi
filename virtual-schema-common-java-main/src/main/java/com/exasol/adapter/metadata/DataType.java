@@ -360,6 +360,9 @@ public class DataType {
         case HASHTYPE:
             appendHashtype(builder);
             break;
+        default:
+            throw new IllegalArgumentException("Unexpected data type \"" + this.exaDataType
+                    + "\" encountered trying to serialize schema metadata.");
         }
         return builder.toString();
     }
