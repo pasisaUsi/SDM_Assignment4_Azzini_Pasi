@@ -6,6 +6,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import com.exasol.adapter.metadata.datatype.DataType;
+
 class DataTypeTest {
     @Test
     void createDecimal() {

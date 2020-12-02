@@ -7,7 +7,9 @@ import java.util.List;
 
 import javax.json.*;
 
-import com.exasol.adapter.metadata.*;
+import com.exasol.adapter.metadata.ColumnMetadata;
+import com.exasol.adapter.metadata.TableMetadata;
+import com.exasol.adapter.metadata.datatype.DataType;
 
 /**
  * This class provides a parser for table metadata

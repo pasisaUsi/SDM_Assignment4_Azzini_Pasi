@@ -18,6 +18,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.metadata.*;
+import com.exasol.adapter.metadata.datatype.DataType;
 import com.exasol.adapter.sql.*;
 
 class PushDownSqlParserTest {

@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.exasol.adapter.metadata.datatype.DataType;
+
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 class ColumnMetadataTest {

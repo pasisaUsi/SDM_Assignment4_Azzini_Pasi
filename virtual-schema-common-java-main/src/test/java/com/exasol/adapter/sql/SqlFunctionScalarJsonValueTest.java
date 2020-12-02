@@ -12,7 +12,7 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.exasol.adapter.AdapterException;
-import com.exasol.adapter.metadata.DataType;
+import com.exasol.adapter.metadata.datatype.DataType;
 import com.exasol.mocking.MockUtils;
 
 @ExtendWith(MockitoExtension.class)

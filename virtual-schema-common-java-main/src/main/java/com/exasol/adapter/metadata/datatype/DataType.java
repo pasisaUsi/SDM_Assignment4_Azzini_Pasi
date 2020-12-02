@@ -1,4 +1,4 @@
-package com.exasol.adapter.metadata;
+package com.exasol.adapter.metadata.datatype;
 
 import java.util.Objects;
 
@@ -10,7 +10,7 @@ public class DataType {
     public static final int MAX_EXASOL_VARCHAR_SIZE = 2000000;
     public static final int MAX_EXASOL_DECIMAL_PRECISION = 36;
 
-    private ExaDataType exaDataType;
+    protected ExaDataType exaDataType;
     private int precision;
     private int scale;
     private int size;
@@ -21,19 +21,7 @@ public class DataType {
     private int intervalFraction;
     private int byteSize;
 
-    public enum ExaDataType {
-        UNSUPPORTED, DECIMAL, DOUBLE, VARCHAR, CHAR, DATE, TIMESTAMP, BOOLEAN, GEOMETRY, INTERVAL, HASHTYPE
-    }
-
-    public enum ExaCharset {
-        UTF8, ASCII
-    }
-
-    public enum IntervalType {
-        DAY_TO_SECOND, YEAR_TO_MONTH
-    }
-
-    private DataType() {
+    protected DataType() {
         // prevent instantiation
     }
 
@@ -44,13 +32,14 @@ public class DataType {
      * @param charset character set to be used when creating the data type
      * @return <code>VARCHAR</code> type
      */
-    public static DataType createVarChar(final int size, final ExaCharset charset) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.VARCHAR;
-        type.size = size;
-        type.charset = charset;
-        return type;
-    }
+    /*
+     * ======================================================================================= Tutte le chiamate a
+     * questo metodo sono state sostituite con la chiamata di new VarChar
+     * =======================================================================================
+     *
+     * public static DataType createVarChar(final int size, final ExaCharset charset) { final DataType type = new
+     * DataType(); type.exaDataType = ExaDataType.VARCHAR; type.size = size; type.charset = charset; return type; }
+     */
 
     /**
      * Create a <code>VARCHAR</code> data type with the maximum size supported by Exasol
@@ -58,9 +47,10 @@ public class DataType {
      * @param charset character set to be used when creating the data type
      * @return <code>VARCHAR</code> type
      */
-    public static DataType createMaximumSizeVarChar(final ExaCharset charset) {
-        return createVarChar(MAX_EXASOL_VARCHAR_SIZE, charset);
-    }
+    /*
+     * public static DataType createMaximumSizeVarChar(final ExaCharset charset) { return new
+     * VarChar(MAX_EXASOL_VARCHAR_SIZE, charset); }
+     */
 
     /**
      * Create a <code>CHAR</code> data type with a given size and character set

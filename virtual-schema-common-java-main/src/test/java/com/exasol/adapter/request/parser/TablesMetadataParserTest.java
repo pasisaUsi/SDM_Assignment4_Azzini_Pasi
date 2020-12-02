@@ -1,8 +1,9 @@
 package com.exasol.adapter.request.parser;
 
 import com.exasol.adapter.metadata.ColumnMetadata;
-import com.exasol.adapter.metadata.DataType;
 import com.exasol.adapter.metadata.TableMetadata;
+import com.exasol.adapter.metadata.datatype.DataType;
+
 import org.junit.jupiter.api.Test;
 
 import javax.json.Json;
@@ -16,8 +17,8 @@ import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.exasol.adapter.metadata.DataType.ExaCharset.ASCII;
-import static com.exasol.adapter.metadata.DataType.ExaCharset.UTF8;
+import static com.exasol.adapter.metadata.datatype.DataType.ExaCharset.ASCII;
+import static com.exasol.adapter.metadata.datatype.DataType.ExaCharset.UTF8;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 

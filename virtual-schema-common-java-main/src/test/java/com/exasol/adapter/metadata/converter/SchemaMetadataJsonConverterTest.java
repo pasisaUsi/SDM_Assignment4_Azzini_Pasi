@@ -19,7 +19,8 @@ import org.mockito.Mockito;
 import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.exasol.adapter.metadata.*;
-import com.exasol.adapter.metadata.DataType.ExaCharset;
+import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.DataType.ExaCharset;
 
 class SchemaMetadataJsonConverterTest {
     private static final SchemaMetadataJsonConverter CONVERTER = SchemaMetadataJsonConverter.getInstance();

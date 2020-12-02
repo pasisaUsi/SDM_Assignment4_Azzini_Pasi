@@ -7,7 +7,8 @@ import java.util.*;
 
 import org.junit.jupiter.api.*;
 
-import com.exasol.adapter.metadata.DataType.ExaCharset;
+import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.DataType.ExaCharset;
 
 class TableMetadataTest {
     private TableMetadata tableMetadata;

@@ -21,6 +21,7 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import com.exasol.ExaMetadata;
 import com.exasol.adapter.metadata.*;
+import com.exasol.adapter.metadata.datatype.DataType;
 import com.exasol.adapter.request.*;
 import com.exasol.adapter.response.*;
 

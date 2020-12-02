@@ -3,7 +3,7 @@ package com.exasol.adapter.sql;
 import java.util.*;
 
 import com.exasol.adapter.AdapterException;
-import com.exasol.adapter.metadata.DataType;
+import com.exasol.adapter.metadata.datatype.DataType;
 
 /**
  * This class represents the {@link ScalarFunction#JSON_VALUE} scalar function.

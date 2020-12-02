@@ -5,7 +5,7 @@ import java.util.Collections;
 import javax.json.*;
 
 import com.exasol.adapter.metadata.*;
-import com.exasol.adapter.metadata.DataType.*;
+import com.exasol.adapter.metadata.datatype.*;
 import com.exasol.errorhandling.ErrorMessages;
 
 /**

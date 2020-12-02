@@ -1,7 +1,7 @@
 package com.exasol.adapter.sql;
 
 import com.exasol.adapter.AdapterException;
-import com.exasol.adapter.metadata.DataType;
+import com.exasol.adapter.metadata.datatype.DataType;
 
 public class SqlLiteralInterval extends SqlNode {
     private final String value;
