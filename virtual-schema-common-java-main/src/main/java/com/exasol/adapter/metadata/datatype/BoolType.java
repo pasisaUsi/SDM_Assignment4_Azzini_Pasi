@@ -6,6 +6,10 @@ public class BoolType extends DataType {
         this.exaDataType = ExaDataType.BOOLEAN;
     }
 
-    // Dimenticato il toString
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

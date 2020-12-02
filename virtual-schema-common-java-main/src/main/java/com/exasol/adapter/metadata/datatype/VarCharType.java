@@ -25,8 +25,7 @@ public class VarCharType extends DataType {
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append("VARCHAR");
-        builder.append(String.format("(%d)", this.size));
+        builder.append(String.format("VARCHAR(%d)", this.size));
         builder.append(this.charset.toString());
         return builder.toString();
     }

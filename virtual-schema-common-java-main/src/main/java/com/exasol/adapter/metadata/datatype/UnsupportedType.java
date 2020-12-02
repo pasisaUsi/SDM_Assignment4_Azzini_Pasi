@@ -6,6 +6,11 @@ public class UnsupportedType extends DataType {
         this.exaDataType = ExaDataType.UNSUPPORTED;
     }
 
-    // Dimenticato il toString
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("UNSUPPORTED");
+        return builder.toString();
+    }
 
 }

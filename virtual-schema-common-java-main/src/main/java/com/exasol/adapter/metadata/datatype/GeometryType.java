@@ -12,4 +12,11 @@ public class GeometryType extends DataType {
         return this.geometrySrid;
     }
 
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(String.format("GEOMETRY(%d)", this.geometrySrid));
+        return builder.toString();
+    }
+
 }

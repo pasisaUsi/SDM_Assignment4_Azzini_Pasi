@@ -12,5 +12,14 @@ public class TimeStampType extends DataType {
         return this.withLocalTimezone;
     }
 
-    // Dimenticato il toString
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("TIMESTAMP");
+        if (this.withLocalTimezone) {
+            builder.append(" WITH LOCAL TIME ZONE");
+        }
+        return builder.toString();
+    }
+
 }

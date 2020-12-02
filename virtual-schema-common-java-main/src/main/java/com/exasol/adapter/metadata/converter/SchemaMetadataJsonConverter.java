@@ -109,7 +109,7 @@ public final class SchemaMetadataJsonConverter {
             throw new IllegalArgumentException("Unsupported data type found trying to serialize schema metadata. "
                     + ErrorMessages.askForBugReport());
         case DECIMAL:
-            typeAsJson.add("precision", dataType.getPrecision());
+            typeAsJson.add("precision", ((DecimalType) dataType).getPrecision());
             typeAsJson.add("scale", ((DecimalType) dataType).getScale());
             break;
         case VARCHAR: // falling through intentionally
@@ -141,9 +141,9 @@ public final class SchemaMetadataJsonConverter {
     }
 
     private void addIntervalToRoot(final DataType dataType, final JsonObjectBuilder dataTypeAsJson) {
-        dataTypeAsJson.add("fromTo", intervalTypeAsString(dataType.getIntervalType()));
-        dataTypeAsJson.add("precision", dataType.getPrecision());
-        if (dataType.getIntervalType() == IntervalType.DAY_TO_SECOND) {
+        dataTypeAsJson.add("fromTo", intervalTypeAsString(((IntervalDataType) dataType).getIntervalType()));
+        dataTypeAsJson.add("precision", ((IntervalDataType) dataType).getPrecision());
+        if (((IntervalDataType) dataType).getIntervalType() == IntervalType.DAY_TO_SECOND) {
             dataTypeAsJson.add("fraction", ((IntervalDaySecondType) dataType).getIntervalFraction());
         }
     }

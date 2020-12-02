@@ -6,6 +6,11 @@ public class DateType extends DataType {
         this.exaDataType = ExaDataType.DATE;
     }
 
-    // Dimenticato il toString
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("DATE");
+        return builder.toString();
+    }
 
 }

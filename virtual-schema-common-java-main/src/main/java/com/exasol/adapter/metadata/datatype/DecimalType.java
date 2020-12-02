@@ -10,15 +10,19 @@ public class DecimalType extends DataType {
         this.scale = scale;
     }
 
-    // Dimenticato il toString
-
-    @Override
     public int getPrecision() {
         return this.precision;
     }
 
     public int getScale() {
         return this.scale;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(String.format("DECIMAL(%d, %d)", this.precision, this.scale));
+        return builder.toString();
     }
 
 }

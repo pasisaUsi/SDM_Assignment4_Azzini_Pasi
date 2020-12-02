@@ -6,5 +6,10 @@ public class DoubleType extends DataType {
         this.exaDataType = ExaDataType.DOUBLE;
     }
 
-    // Dimenticato il toString
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("DOUBLE");
+        return builder.toString();
+    }
 }

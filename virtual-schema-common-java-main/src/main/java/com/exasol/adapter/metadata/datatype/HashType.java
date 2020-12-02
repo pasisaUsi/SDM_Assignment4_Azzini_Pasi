@@ -10,6 +10,13 @@ public class HashType extends DataType {
     }
 
     @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append("HASHTYPE");
+        builder.append(String.format("(%d byte)", this.byteSize));
+        return builder.toString();
+    }
+
     public int getByteSize() {
         return this.byteSize;
     }

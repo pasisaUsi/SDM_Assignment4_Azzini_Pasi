@@ -13,7 +13,6 @@ public class CharType extends DataType {
     public CharType(final ExaCharset charset) {
         this(MAX_EXASOL_CHAR_SIZE, charset);
     }
-    // Dimenticato il toString
 
     public int getSize() {
         return this.size;
@@ -21,5 +20,13 @@ public class CharType extends DataType {
 
     public ExaCharset getCharset() {
         return this.charset;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(String.format("CHAR(%d)", this.size));
+        builder.append(this.charset.toString());
+        return builder.toString();
     }
 }

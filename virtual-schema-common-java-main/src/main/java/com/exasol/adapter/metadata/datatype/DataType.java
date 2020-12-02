@@ -5,7 +5,7 @@ import java.util.Objects;
 /**
  * Represents an EXASOL data type.
  */
-public class DataType {
+public abstract class DataType {
     public static final int MAX_EXASOL_CHAR_SIZE = 2000;
     public static final int MAX_EXASOL_VARCHAR_SIZE = 2000000;
     public static final int MAX_EXASOL_DECIMAL_PRECISION = 36;
@@ -35,33 +35,6 @@ public class DataType {
     }
 
     /**
-     * Get the precision
-     *
-     * @return precision
-     */
-    public int getPrecision() {
-        return this.precision;
-    }
-
-    /**
-     * Get the interval type
-     *
-     * @return interval type
-     */
-    public IntervalType getIntervalType() {
-        return this.intervalType;
-    }
-
-    /**
-     * Get the size in bytes.
-     *
-     * @return byte size
-     */
-    public int getByteSize() {
-        return this.byteSize;
-    }
-
-    /**
      * Check if the data type is supported.
      *
      * @return {@code true} if the data type is supported by the Virtual Schema.
@@ -71,75 +44,7 @@ public class DataType {
     }
 
     @Override
-    public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        switch (this.exaDataType) {
-        case UNSUPPORTED:
-            appendOneString(builder, "UNSUPPORTED");
-            break;
-        case DECIMAL:
-            appendDecimal(builder);
-            break;
-        case DOUBLE:
-            appendOneString(builder, "DOUBLE");
-            break;
-        case VARCHAR:
-            appendLiteralValue(builder, "VARCHAR");
-            break;
-        case CHAR:
-            appendLiteralValue(builder, "CHAR");
-            break;
-        case DATE:
-            appendOneString(builder, "DATE");
-            break;
-        case TIMESTAMP:
-            appendTimestamp(builder);
-            break;
-        case BOOLEAN:
-            appendOneString(builder, "BOOLEAN");
-            break;
-        case GEOMETRY:
-            appendGeometry(builder);
-            break;
-        case INTERVAL:
-            appendInterval(builder);
-            break;
-        case HASHTYPE:
-            appendHashtype(builder);
-            break;
-        default:
-            throw new IllegalArgumentException("Unexpected data type \"" + this.exaDataType);
-        }
-        return builder.toString();
-    }
-
-    private void appendHashtype(final StringBuilder builder) {
-        builder.append("HASHTYPE");
-        builder.append("(");
-        builder.append(this.byteSize);
-        builder.append(" byte");
-        builder.append(")");
-    }
-
-    private void appendInterval(final StringBuilder builder) {
-        builder.append("INTERVAL ");
-        if (this.intervalType == IntervalType.YEAR_TO_MONTH) {
-            builder.append("YEAR");
-            builder.append(" (");
-            builder.append(this.precision);
-            builder.append(")");
-            builder.append(" TO MONTH");
-        } else {
-            builder.append("DAY");
-            builder.append(" (");
-            builder.append(this.precision);
-            builder.append(")");
-            builder.append(" TO SECOND");
-            builder.append(" (");
-            builder.append(this.intervalFraction);
-            builder.append(")");
-        }
-    }
+    abstract public String toString();
 
     private void appendGeometry(final StringBuilder builder) {
         builder.append("GEOMETRY");

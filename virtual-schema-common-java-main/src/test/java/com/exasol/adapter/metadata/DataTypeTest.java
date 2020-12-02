@@ -12,7 +12,7 @@ class DataTypeTest {
     @Test
     void createDecimal() {
         final DataType dataType = new DecimalType(10, 2);
-        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
+        assertAll(() -> assertThat(((DecimalType) dataType).getPrecision(), equalTo(10)),
                 () -> assertThat(((DecimalType) dataType).getScale(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("DECIMAL(10, 2)")));
     }
@@ -81,7 +81,7 @@ class DataTypeTest {
     @Test
     void createIntervalDaySecond() {
         final DataType dataType = new IntervalDaySecondType(10, 2);
-        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
+        assertAll(() -> assertThat(((IntervalDaySecondType) dataType).getPrecision(), equalTo(10)),
                 () -> assertThat(((IntervalDaySecondType) dataType).getIntervalFraction(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL DAY (10) TO SECOND (2)")));
     }
@@ -89,7 +89,7 @@ class DataTypeTest {
     @Test
     void createIntervalYearMonth() {
         final DataType dataType = new IntervalYearMonthType(10);
-        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
+        assertAll(() -> assertThat(((IntervalYearMonthType) dataType).getPrecision(), equalTo(10)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL YEAR (10) TO MONTH")));
     }
 

@@ -1,23 +1,17 @@
 package com.exasol.adapter.metadata.datatype;
 
-public class IntervalYearMonthType extends DataType {
-    private final int precision;
-    private final IntervalType intervalType;
+public class IntervalYearMonthType extends IntervalDataType {
 
     public IntervalYearMonthType(final int precision) {
-        this.exaDataType = ExaDataType.INTERVAL;
-        this.precision = precision;
-        this.intervalType = IntervalType.YEAR_TO_MONTH;
+        super(precision);
     }
 
     @Override
-    public int getPrecision() {
-        return this.precision;
-    }
-
-    @Override
-    public IntervalType getIntervalType() {
-        return this.intervalType;
+    public String toString() {
+        final StringBuilder builder = new StringBuilder();
+        builder.append(super.toString());
+        builder.append(String.format("YEAR (%d) TO MONTH", this.precision));
+        return builder.toString();
     }
 
 }
