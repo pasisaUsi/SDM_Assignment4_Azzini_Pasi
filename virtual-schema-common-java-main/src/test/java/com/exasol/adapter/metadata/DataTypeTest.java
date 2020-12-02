@@ -10,9 +10,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class DataTypeTest {
     @Test
     void createDecimal() {
-        final DataType dataType = new DecimalType(10, 2);
-        assertAll(() -> assertThat(((DecimalType) dataType).getPrecision(), equalTo(10)),
-                () -> assertThat(((DecimalType) dataType).getScale(), equalTo(2)),
+        final DecimalType dataType = new DecimalType(10, 2);
+        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
+                () -> assertThat(dataType.getScale(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("DECIMAL(10, 2)")));
     }
 
@@ -24,31 +24,31 @@ class DataTypeTest {
 
     @Test
     void createVarChar() {
-        final DataType dataType = new VarCharType(100, ExaCharset.UTF8);
-        assertAll(() -> assertThat(((VarCharType) dataType).getCharset(), equalTo(ExaCharset.UTF8)),
-                () -> assertThat(((VarCharType) dataType).getSize(), equalTo(100)),
+        final VarCharType dataType = new VarCharType(100, ExaCharset.UTF8);
+        assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
+                () -> assertThat(dataType.getSize(), equalTo(100)),
                 () -> assertThat(dataType.toString(), equalTo("VARCHAR(100) UTF8")));
     }
 
     @Test
     void createChar() {
-        final DataType dataType = new CharType(101, ExaCharset.UTF8);
-        assertAll(() -> assertThat(((CharType) dataType).getCharset(), equalTo(ExaCharset.UTF8)),
-                () -> assertThat(((CharType) dataType).getSize(), equalTo(101)),
+        final CharType dataType = new CharType(101, ExaCharset.UTF8);
+        assertAll(() -> assertThat(dataType.getCharset(), equalTo(ExaCharset.UTF8)),
+                () -> assertThat(dataType.getSize(), equalTo(101)),
                 () -> assertThat(dataType.toString(), equalTo("CHAR(101) UTF8")));
     }
 
     @Test
     void createTimestampWithLocalTimezone() {
-        final DataType dataType = new TimeStampType(true);
-        assertAll(() -> assertTrue(((TimeStampType) dataType).isWithLocalTimezone()),
+        final TimeStampType dataType = new TimeStampType(true);
+        assertAll(() -> assertTrue(dataType.isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP WITH LOCAL TIME ZONE")));
     }
 
     @Test
     void createTimestampWithoutLocalTimezone() {
-        final DataType dataType = new TimeStampType(false);
-        assertAll(() -> assertFalse(((TimeStampType) dataType).isWithLocalTimezone()),
+        final TimeStampType dataType = new TimeStampType(false);
+        assertAll(() -> assertFalse(dataType.isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP")));
     }
 
@@ -72,46 +72,46 @@ class DataTypeTest {
 
     @Test
     void createGeometry() {
-        final DataType dataType = new GeometryType(4);
-        assertAll(() -> assertThat(((GeometryType) dataType).getGeometrySrid(), equalTo(4)),
+        final GeometryType dataType = new GeometryType(4);
+        assertAll(() -> assertThat(dataType.getGeometrySrid(), equalTo(4)),
                 () -> assertThat(dataType.toString(), equalTo("GEOMETRY(4)")));
     }
 
     @Test
     void createIntervalDaySecond() {
-        final DataType dataType = new IntervalDaySecondType(10, 2);
-        assertAll(() -> assertThat(((IntervalDaySecondType) dataType).getPrecision(), equalTo(10)),
-                () -> assertThat(((IntervalDaySecondType) dataType).getIntervalFraction(), equalTo(2)),
+        final IntervalDaySecondType dataType = new IntervalDaySecondType(10, 2);
+        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
+                () -> assertThat(dataType.getIntervalFraction(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL DAY (10) TO SECOND (2)")));
     }
 
     @Test
     void createIntervalYearMonth() {
-        final DataType dataType = new IntervalYearMonthType(10);
-        assertAll(() -> assertThat(((IntervalYearMonthType) dataType).getPrecision(), equalTo(10)),
+        final IntervalYearMonthType dataType = new IntervalYearMonthType(10);
+        assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL YEAR (10) TO MONTH")));
     }
 
     @Test
     void testCreateMaximumSizeVarChar() {
-        final DataType dataType = new VarCharType(ExaCharset.ASCII);
+        final VarCharType dataType = new VarCharType(ExaCharset.ASCII);
         assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.VARCHAR)),
-                () -> assertThat(((VarCharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
-                () -> assertThat(((VarCharType) dataType).getCharset(), equalTo(ExaCharset.ASCII)));
+                () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
+                () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
     @Test
     void testCreateMaximumSizeChar() {
-        final DataType dataType = new CharType(ExaCharset.ASCII);
+        final CharType dataType = new CharType(ExaCharset.ASCII);
         assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.CHAR)),
-                () -> assertThat(((CharType) dataType).getSize(), equalTo(DataType.MAX_EXASOL_CHAR_SIZE)),
-                () -> assertThat(((CharType) dataType).getCharset(), equalTo(ExaCharset.ASCII)));
+                () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_CHAR_SIZE)),
+                () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
     @Test
     void createHashtype() {
-        final DataType dataType = new HashType(16);
-        assertAll(() -> assertThat(((HashType) dataType).getByteSize(), equalTo(16)),
+        final HashType dataType = new HashType(16);
+        assertAll(() -> assertThat(dataType.getByteSize(), equalTo(16)),
                 () -> assertThat(dataType.toString(), equalTo("HASHTYPE(16 byte)")));
     }
 
