@@ -370,7 +370,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         final IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
         if (intervalType == IntervalType.DAY_TO_SECOND) {
             final int fraction = dataType.getInt("fraction", 3);
-            type = DataType.createIntervalDaySecond(precision, fraction);
+            type = new IntervalDaySecond(precision, fraction);
         } else {
             assert intervalType == IntervalType.YEAR_TO_MONTH;
             type = DataType.createIntervalYearMonth(precision);

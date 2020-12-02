@@ -120,7 +120,7 @@ public class TablesMetadataParser {
         final IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
         if (intervalType == IntervalType.DAY_TO_SECOND) {
             final int fraction = dataType.getInt("fraction", 3);
-            return DataType.createIntervalDaySecond(precision, fraction);
+            return new IntervalDaySecond(precision, fraction);
         } else {
             return DataType.createIntervalYearMonth(precision);
         }

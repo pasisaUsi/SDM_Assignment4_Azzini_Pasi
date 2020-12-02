@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.AdapterException;
 import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.IntervalDaySecond;
 import com.exasol.mocking.MockUtils;
 
 class SqlLiteralIntervalTest {
@@ -18,7 +19,7 @@ class SqlLiteralIntervalTest {
 
     @BeforeEach
     void setUp() {
-        this.dayToSecond = DataType.createIntervalDaySecond(1, 2);
+        this.dayToSecond = new IntervalDaySecond(1, 2);
         final DataType yearToMonth = DataType.createIntervalYearMonth(3);
         this.sqlLiteralIntervalDayToSecond = new SqlLiteralInterval(VALUE, this.dayToSecond);
     }

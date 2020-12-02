@@ -81,7 +81,7 @@ class DataTypeTest {
 
     @Test
     void createIntervalDaySecond() {
-        final DataType dataType = DataType.createIntervalDaySecond(10, 2);
+        final DataType dataType = new IntervalDaySecond(10, 2);
         assertAll(() -> assertThat(dataType.getPrecision(), equalTo(10)),
                 () -> assertThat(dataType.getIntervalFraction(), equalTo(2)),
                 () -> assertThat(dataType.toString(), equalTo("INTERVAL DAY (10) TO SECOND (2)")));

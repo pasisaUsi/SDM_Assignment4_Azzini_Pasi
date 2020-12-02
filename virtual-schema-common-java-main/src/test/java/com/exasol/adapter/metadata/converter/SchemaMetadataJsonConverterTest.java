@@ -113,7 +113,7 @@ class SchemaMetadataJsonConverterTest {
     void testConvertTypeIntervalDayToSecond() {
         final int precision = 2;
         final int fraction = 3;
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createIntervalDaySecond(precision, fraction));
+        final JsonObject jsonObject = CONVERTER.convertType(new IntervalDaySecond(precision, fraction));
         assertAll(() -> assertTypeName(jsonObject, "interval"),
                 () -> assertThat(jsonObject.getString("fromTo"), equalTo("DAY TO SECONDS")),
                 () -> assertThat(jsonObject.getInt("precision"), equalTo(precision)),

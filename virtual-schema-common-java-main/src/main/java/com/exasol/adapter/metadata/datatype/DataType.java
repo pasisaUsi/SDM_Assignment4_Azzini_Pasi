@@ -26,24 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create an <code>INTERVAL DAY TO SECOND</code> data type
-     *
-     * @param precision number of days the interval can span
-     * @param fraction  decimal places after the point
-     * @return <code>INTERVAL DAY TO SECOND</code> data type
-     * @see <a href="https://docs.exasol.com/sql_references/data_types/datatypedetails.htm?Highlight=interval">Interval
-     *      data type (Exasol documentation)</a>
-     */
-    public static DataType createIntervalDaySecond(final int precision, final int fraction) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.INTERVAL;
-        type.intervalType = IntervalType.DAY_TO_SECOND;
-        type.precision = precision;
-        type.intervalFraction = fraction;
-        return type;
-    }
-
-    /**
      * Create an <code>INTERVAL YEAR TO MONTH</code> data type
      *
      * @param precision number of years the interval can span

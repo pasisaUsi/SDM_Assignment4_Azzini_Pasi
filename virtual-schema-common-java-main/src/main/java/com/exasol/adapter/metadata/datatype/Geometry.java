@@ -1,7 +1,7 @@
 package com.exasol.adapter.metadata.datatype;
 
 public class Geometry extends DataType {
-    public int geometrySrid;
+    private final int geometrySrid;
 
     public Geometry(final int geometrySrid) {
         this.exaDataType = ExaDataType.GEOMETRY;

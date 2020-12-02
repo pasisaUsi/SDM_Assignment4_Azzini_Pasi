@@ -1,7 +1,7 @@
 package com.exasol.adapter.metadata.datatype;
 
 public class TimeStamp extends DataType {
-    public boolean withLocalTimezone;
+    private final boolean withLocalTimezone;
 
     public TimeStamp(final boolean withLocalTimezone) {
         this.exaDataType = ExaDataType.TIMESTAMP;
