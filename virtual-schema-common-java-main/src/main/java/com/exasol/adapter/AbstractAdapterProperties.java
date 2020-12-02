@@ -3,12 +3,12 @@ package com.exasol.adapter;
 import java.util.*;
 
 /**
- * This is the abstract base class that provides access to the user defined adapter properties.
+ * This is the base class that provides access to the user defined adapter properties.
  * <p>
  * On this level the basic access to properties as key-value pairs is handled. If you are looking for interpreted
  * properties, check the concrete implementations of this abstract class.
  */
-public abstract class AbstractAdapterProperties {
+public class AbstractAdapterProperties {
     private final Map<String, String> properties;
 
     /**
@@ -16,7 +16,7 @@ public abstract class AbstractAdapterProperties {
      *
      * @param properties map of property keys and values
      */
-    public AbstractAdapterProperties(final Map<String, String> properties) {
+    protected AbstractAdapterProperties(final Map<String, String> properties) {
         this.properties = properties;
     }
 
@@ -91,7 +91,10 @@ public abstract class AbstractAdapterProperties {
         if (this == o) {
             return true;
         }
-        if ((o == null) || (getClass() != o.getClass())) {
+        if (o == null) {
+            return false;
+        }
+        if (getClass() != o.getClass()) {
             return false;
         }
         final AbstractAdapterProperties that = (AbstractAdapterProperties) o;
