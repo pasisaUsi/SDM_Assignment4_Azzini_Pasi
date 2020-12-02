@@ -8,6 +8,7 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Double;
 import com.exasol.adapter.sql.*;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.KeyUniquenessConstraint;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.TypeConstraints;
@@ -320,7 +321,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         case "DECIMAL":
             return new Decimal(dataType.getInt("precision"), dataType.getInt("scale"));
         case "DOUBLE":
-            return DataType.createDouble();
+            return new Double();
         case "VARCHAR":
             return getVarchar(dataType);
         case "CHAR":

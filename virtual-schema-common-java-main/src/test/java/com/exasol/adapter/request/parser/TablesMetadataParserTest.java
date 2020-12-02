@@ -18,6 +18,7 @@ import org.junit.jupiter.api.Test;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Double;
 
 class TablesMetadataParserTest {
     @Test
@@ -67,8 +68,8 @@ class TablesMetadataParserTest {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
         tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(new Decimal(18, 2))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(DataType.createDouble())
-                .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new Double()).nullable(true)
+                .identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_1").adapterNotes("")
                 .type(DataType.createVarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("")
                 .build());

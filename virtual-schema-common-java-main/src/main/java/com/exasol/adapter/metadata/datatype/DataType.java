@@ -93,11 +93,10 @@ public class DataType {
      *
      * @return <code>DOUBLE</code> data type
      */
-    public static DataType createDouble() {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.DOUBLE;
-        return type;
-    }
+    /*
+     * public static DataType createDouble() { final DataType type = new DataType(); type.exaDataType =
+     * ExaDataType.DOUBLE; return type; }
+     */
 
     /**
      * Create a <code>DATE</code> data type

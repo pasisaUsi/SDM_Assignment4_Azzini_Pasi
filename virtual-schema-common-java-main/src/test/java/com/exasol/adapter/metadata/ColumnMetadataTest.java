@@ -9,11 +9,12 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.Double;
 
 import nl.jqno.equalsverifier.EqualsVerifier;
 
 class ColumnMetadataTest {
-    private static final DataType TYPE_DOUBLE = DataType.createDouble();
+    private static final DataType TYPE_DOUBLE = new Double();
     private static final String COLUMN_NAME = "COLUMN_NAME";
     private ColumnMetadata.Builder builder;
 

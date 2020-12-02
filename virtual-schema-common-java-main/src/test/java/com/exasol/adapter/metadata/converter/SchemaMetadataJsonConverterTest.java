@@ -20,6 +20,7 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.exasol.adapter.metadata.*;
 import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Double;
 
 class SchemaMetadataJsonConverterTest {
     private static final SchemaMetadataJsonConverter CONVERTER = SchemaMetadataJsonConverter.getInstance();
@@ -58,7 +59,7 @@ class SchemaMetadataJsonConverterTest {
                 + "}";
         final List<TableMetadata> tables = new ArrayList<>();
         final List<ColumnMetadata> columnsA = new ArrayList<>();
-        columnsA.add(new ColumnMetadata.Builder().name("column_A1").comment("comment A1").type(DataType.createDouble())
+        columnsA.add(new ColumnMetadata.Builder().name("column_A1").comment("comment A1").type(new Double())
                 .adapterNotes("notes A1").nullable(false).build());
         columnsA.add(new ColumnMetadata.Builder().name("column_A2").type(DataType.createDate())
                 .defaultValue("default A2").identity(true).build());

@@ -10,6 +10,7 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Double;
 
 /**
  * This class provides a parser for table metadata
@@ -149,7 +150,7 @@ public class TablesMetadataParser {
     }
 
     private DataType getDoubleDataType() {
-        return DataType.createDouble();
+        return new Double();
     }
 
     private DataType getDecimalDataType(final JsonObject dataType) {
