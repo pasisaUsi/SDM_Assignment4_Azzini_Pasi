@@ -26,20 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create a <code>TIMESTAMP</code> data type
-     *
-     * @param withLocalTimezone defines whether the timestamp is local time (<code>true</code>) or
-     *                          UTC(<code>false</code>)
-     * @return <code>TIMESTAMP</code> data type
-     */
-    public static DataType createTimestamp(final boolean withLocalTimezone) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.TIMESTAMP;
-        type.withLocalTimezone = withLocalTimezone;
-        return type;
-    }
-
-    /**
      * Create a <code>BOOL</code> data type
      *
      * @return <code>BOOL</code> data type

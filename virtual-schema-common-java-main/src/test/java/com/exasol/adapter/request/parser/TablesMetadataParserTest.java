@@ -30,9 +30,8 @@ class TablesMetadataParserTest {
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(new VarChar(1000, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(
-                ColumnMetadata.builder().name("REQUEST_TIME").adapterNotes("").type(DataType.createTimestamp(false))
-                        .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("REQUEST_TIME").adapterNotes("").type(new TimeStamp(false))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
         final List<TableMetadata> expectedInvolvedTablesMetadata = new ArrayList<>();
         expectedInvolvedTablesMetadata.add(new TableMetadata("CLICKS", "", tableColumns, ""));
         final JsonArray tablesAsJson = readInvolvedTablesFromJsonFile("target/test-classes/pushdown_request.json");
@@ -71,31 +70,25 @@ class TablesMetadataParserTest {
         tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new Double()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_1").adapterNotes("")
-                .type(DataType.createVarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("")
-                .build());
+                .type(new VarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_2").adapterNotes("")
-                .type(DataType.createVarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("")
-                .build());
+                .type(new VarChar(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_ASCII").adapterNotes("")
-                .type(DataType.createVarChar(10000, ASCII)).nullable(true).identity(true).defaultValue("").comment("")
-                .build());
-        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_1").adapterNotes("")
-                .type(DataType.createChar(3, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("")
-                .type(DataType.createChar(3, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
+                .type(new VarChar(10000, ASCII)).nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_1").adapterNotes("").type(new Char(3, UTF8))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("").type(new Char(3, UTF8))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_CHAR_ASCII").adapterNotes("").type(new Char(3, ASCII))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_DATE").adapterNotes("").type(new Date()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
-        tableColumns.add(
-                ColumnMetadata.builder().name("C_TIMESTAMP_1").adapterNotes("").type(DataType.createTimestamp(false))
-                        .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(
-                ColumnMetadata.builder().name("C_TIMESTAMP_2").adapterNotes("").type(DataType.createTimestamp(false))
-                        .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(
-                ColumnMetadata.builder().name("C_TIMESTAMP_3").adapterNotes("").type(DataType.createTimestamp(true))
-                        .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_1").adapterNotes("").type(new TimeStamp(false))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_2").adapterNotes("").type(new TimeStamp(false))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_TIMESTAMP_3").adapterNotes("").type(new TimeStamp(true))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_BOOLEAN").adapterNotes("").type(DataType.createBool())
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(DataType.createGeometry(1))

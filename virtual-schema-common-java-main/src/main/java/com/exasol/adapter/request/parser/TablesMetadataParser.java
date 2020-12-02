@@ -128,7 +128,7 @@ public class TablesMetadataParser {
 
     private DataType getTimestampDataType(final JsonObject dataType) {
         final boolean withLocalTimezone = dataType.getBoolean("withLocalTimeZone", false);
-        return DataType.createTimestamp(withLocalTimezone);
+        return new TimeStamp(withLocalTimezone);
     }
 
     private DataType getDateDataType() {

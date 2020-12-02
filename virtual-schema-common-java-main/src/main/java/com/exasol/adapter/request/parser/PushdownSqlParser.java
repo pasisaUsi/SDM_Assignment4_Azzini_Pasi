@@ -361,7 +361,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
 
     private DataType getTimestamp(final JsonObject dataType) {
         final boolean withLocalTimezone = dataType.getBoolean("withLocalTimeZone", false);
-        return DataType.createTimestamp(withLocalTimezone);
+        return new TimeStamp(withLocalTimezone);
     }
 
     private DataType getInterval(final JsonObject dataType) {

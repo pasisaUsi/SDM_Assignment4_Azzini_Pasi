@@ -42,14 +42,14 @@ class DataTypeTest {
 
     @Test
     void createTimestampWithLocalTimezone() {
-        final DataType dataType = DataType.createTimestamp(true);
+        final DataType dataType = new TimeStamp(true);
         assertAll(() -> assertTrue(dataType.isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP WITH LOCAL TIME ZONE")));
     }
 
     @Test
     void createTimestampWithoutLocalTimezone() {
-        final DataType dataType = DataType.createTimestamp(false);
+        final DataType dataType = new TimeStamp(false);
         assertAll(() -> assertFalse(dataType.isWithLocalTimezone()),
                 () -> assertThat(dataType.toString(), equalTo("TIMESTAMP")));
     }

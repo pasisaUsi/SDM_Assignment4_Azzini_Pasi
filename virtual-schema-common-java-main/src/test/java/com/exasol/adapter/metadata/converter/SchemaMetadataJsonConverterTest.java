@@ -88,7 +88,7 @@ class SchemaMetadataJsonConverterTest {
 
     @Test
     void testConvertTypeTimestamp() {
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createTimestamp(true));
+        final JsonObject jsonObject = CONVERTER.convertType(new TimeStamp(true));
         assertAll(() -> assertTypeName(jsonObject, "timestamp"),
                 () -> assertThat(jsonObject.getBoolean("withLocalTimeZone"), equalTo(true)));
     }
