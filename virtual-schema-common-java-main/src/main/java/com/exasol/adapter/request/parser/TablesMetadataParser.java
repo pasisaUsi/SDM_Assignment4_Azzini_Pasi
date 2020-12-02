@@ -132,7 +132,7 @@ public class TablesMetadataParser {
     }
 
     private DataType getDateDataType() {
-        return DataType.createDate();
+        return new Date();
     }
 
     private DataType getBooleanDataType() {

@@ -62,13 +62,13 @@ class DataTypeTest {
 
     @Test
     void createUnsupported() {
-        final DataType dataType = DataType.createUnsupported();
+        final DataType dataType = new Unsupported();
         assertThat(dataType.toString(), equalTo("UNSUPPORTED"));
     }
 
     @Test
     void createDate() {
-        final DataType dataType = DataType.createDate();
+        final DataType dataType = new Date();
         assertThat(dataType.toString(), equalTo("DATE"));
     }
 
@@ -96,18 +96,18 @@ class DataTypeTest {
 
     @Test
     void testCreateMaximumSizeVarChar() {
-        final DataType dataType = DataType.createMaximumSizeVarChar(DataType.ExaCharset.ASCII);
-        assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(DataType.ExaDataType.VARCHAR)),
+        final DataType dataType = new Char(ExaCharset.ASCII);
+        assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.VARCHAR)),
                 () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_VARCHAR_SIZE)),
-                () -> assertThat(dataType.getCharset(), equalTo(DataType.ExaCharset.ASCII)));
+                () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
     @Test
     void testCreateMaximumSizeChar() {
-        final DataType dataType = DataType.createMaximumSizeChar(DataType.ExaCharset.ASCII);
-        assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(DataType.ExaDataType.CHAR)),
+        final DataType dataType = new Char(ExaCharset.ASCII);
+        assertAll(() -> assertThat(dataType.getExaDataType(), equalTo(ExaDataType.CHAR)),
                 () -> assertThat(dataType.getSize(), equalTo(DataType.MAX_EXASOL_CHAR_SIZE)),
-                () -> assertThat(dataType.getCharset(), equalTo(DataType.ExaCharset.ASCII)));
+                () -> assertThat(dataType.getCharset(), equalTo(ExaCharset.ASCII)));
     }
 
     @Test
@@ -119,11 +119,11 @@ class DataTypeTest {
 
     @Test
     void testIsSupportedDate() {
-        assertThat(DataType.createDate().isSupported(), equalTo(true));
+        assertThat(new Date().isSupported(), equalTo(true));
     }
 
     @Test
     void testIsSupportedForUnsupporteTypeFalse() {
-        assertThat(DataType.createUnsupported().isSupported(), equalTo(false));
+        assertThat(new Unsupported().isSupported(), equalTo(false));
     }
 }

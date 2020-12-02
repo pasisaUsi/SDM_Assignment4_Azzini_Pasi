@@ -61,8 +61,8 @@ class SchemaMetadataJsonConverterTest {
         final List<ColumnMetadata> columnsA = new ArrayList<>();
         columnsA.add(new ColumnMetadata.Builder().name("column_A1").comment("comment A1").type(new Double())
                 .adapterNotes("notes A1").nullable(false).build());
-        columnsA.add(new ColumnMetadata.Builder().name("column_A2").type(DataType.createDate())
-                .defaultValue("default A2").identity(true).build());
+        columnsA.add(new ColumnMetadata.Builder().name("column_A2").type(new Date()).defaultValue("default A2")
+                .identity(true).build());
         final List<ColumnMetadata> columnsB = new ArrayList<>();
         columnsB.add(new ColumnMetadata.Builder().name("COLUMN_B1").type(DataType.createBool()).build());
         tables.add(new TableMetadata("table_A", "notes A", columnsA, "comment A"));

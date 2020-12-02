@@ -8,6 +8,7 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
+import com.exasol.adapter.metadata.datatype.Date;
 import com.exasol.adapter.metadata.datatype.Double;
 import com.exasol.adapter.sql.*;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.KeyUniquenessConstraint;
@@ -329,7 +330,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         case "BOOLEAN":
             return DataType.createBool();
         case "DATE":
-            return DataType.createDate();
+            return new Date();
         case "TIMESTAMP":
             return getTimestamp(dataType);
         case "INTERVAL":

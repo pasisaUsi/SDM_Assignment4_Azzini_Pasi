@@ -83,11 +83,10 @@ class TablesMetadataParserTest {
                 .type(DataType.createChar(3, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("")
                 .type(DataType.createChar(3, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns
-                .add(ColumnMetadata.builder().name("C_CHAR_ASCII").adapterNotes("").type(DataType.createChar(3, ASCII))
-                        .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_DATE").adapterNotes("").type(DataType.createDate())
+        tableColumns.add(ColumnMetadata.builder().name("C_CHAR_ASCII").adapterNotes("").type(new Char(3, ASCII))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_DATE").adapterNotes("").type(new Date()).nullable(true)
+                .identity(true).defaultValue("").comment("").build());
         tableColumns.add(
                 ColumnMetadata.builder().name("C_TIMESTAMP_1").adapterNotes("").type(DataType.createTimestamp(false))
                         .nullable(true).identity(true).defaultValue("").comment("").build());
