@@ -136,7 +136,7 @@ public class TablesMetadataParser {
     }
 
     private DataType getBooleanDataType() {
-        return DataType.createBool();
+        return new Bool();
     }
 
     private DataType getCharDataType(final JsonObject dataType) {

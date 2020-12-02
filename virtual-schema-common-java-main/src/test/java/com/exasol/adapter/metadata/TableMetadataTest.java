@@ -3,12 +3,13 @@ package com.exasol.adapter.metadata;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import com.exasol.adapter.metadata.datatype.DataType;
-import com.exasol.adapter.metadata.datatype.DataType.ExaCharset;
+import com.exasol.adapter.metadata.datatype.*;
 
 class TableMetadataTest {
     private TableMetadata tableMetadata;
@@ -16,8 +17,8 @@ class TableMetadataTest {
     @BeforeEach
     void setUp() {
         final List<ColumnMetadata> columns = new ArrayList<>();
-        columns.add(ColumnMetadata.builder().name("C1").type(DataType.createBool()).build());
-        columns.add(ColumnMetadata.builder().name("C2").type(DataType.createVarChar(70, ExaCharset.ASCII)).build());
+        columns.add(ColumnMetadata.builder().name("C1").type(new Bool()).build());
+        columns.add(ColumnMetadata.builder().name("C2").type(new VarChar(70, ExaCharset.ASCII)).build());
         final String name = "FooBar";
         this.tableMetadata = new TableMetadata(name, "", columns, "");
     }

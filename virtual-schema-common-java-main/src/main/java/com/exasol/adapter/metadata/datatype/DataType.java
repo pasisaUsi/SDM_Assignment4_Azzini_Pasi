@@ -26,17 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create a <code>BOOL</code> data type
-     *
-     * @return <code>BOOL</code> data type
-     */
-    public static DataType createBool() {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.BOOLEAN;
-        return type;
-    }
-
-    /**
      * Create a <code>GEOMETRY</code> data type
      *
      * @param srid Spatial Reference System Identifier

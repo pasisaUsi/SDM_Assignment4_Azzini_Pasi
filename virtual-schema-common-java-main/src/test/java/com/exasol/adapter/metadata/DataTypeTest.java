@@ -56,7 +56,7 @@ class DataTypeTest {
 
     @Test
     void createBool() {
-        final DataType dataType = DataType.createBool();
+        final DataType dataType = new Bool();
         assertThat(dataType.toString(), equalTo("BOOLEAN"));
     }
 

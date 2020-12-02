@@ -328,7 +328,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
         case "CHAR":
             return getChar(dataType);
         case "BOOLEAN":
-            return DataType.createBool();
+            return new Bool();
         case "DATE":
             return new Date();
         case "TIMESTAMP":

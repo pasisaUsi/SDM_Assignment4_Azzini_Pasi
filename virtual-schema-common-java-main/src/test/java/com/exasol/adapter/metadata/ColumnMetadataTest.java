@@ -8,6 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.exasol.adapter.metadata.datatype.Bool;
 import com.exasol.adapter.metadata.datatype.DataType;
 import com.exasol.adapter.metadata.datatype.Double;
 
@@ -25,7 +26,7 @@ class ColumnMetadataTest {
 
     @Test
     void testDefaultValues() {
-        final ColumnMetadata metadata = ColumnMetadata.builder().name("FOO").type(DataType.createBool()).build();
+        final ColumnMetadata metadata = ColumnMetadata.builder().name("FOO").type(new Bool()).build();
         assertAll(() -> assertThat("adapter notes", metadata.getAdapterNotes(), equalTo("")),
                 () -> assertThat("nullable", metadata.isNullable(), equalTo(true)),
                 () -> assertThat("identity", metadata.isIdentity(), equalTo(false)),
@@ -35,13 +36,12 @@ class ColumnMetadataTest {
 
     @Test
     void testBuildWithoutNameThrowsException() {
-        assertThrows(IllegalStateException.class, () -> ColumnMetadata.builder().type(DataType.createBool()).build());
+        assertThrows(IllegalStateException.class, () -> ColumnMetadata.builder().type(new Bool()).build());
     }
 
     @Test
     void testBuildWithEmptyNameThrowsException() {
-        assertThrows(IllegalStateException.class,
-                () -> ColumnMetadata.builder().name("").type(DataType.createBool()).build());
+        assertThrows(IllegalStateException.class, () -> ColumnMetadata.builder().name("").type(new Bool()).build());
     }
 
     @Test
