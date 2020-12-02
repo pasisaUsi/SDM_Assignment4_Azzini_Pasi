@@ -18,14 +18,13 @@ import org.junit.jupiter.api.Test;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.DoubleType;
 
 class TablesMetadataParserTest {
     @Test
     void testParseMetadata() throws IOException {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
-        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new DecimalType(22, 0)).nullable(true)
-                .identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("ID").adapterNotes("").type(new DecimalType(22, 0))
+                .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("USER_ID").adapterNotes("").type(new DecimalType(18, 0))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("URL").adapterNotes("").type(new VarCharType(1000, UTF8))
@@ -67,14 +66,15 @@ class TablesMetadataParserTest {
         final List<ColumnMetadata> tableColumns = new ArrayList<>();
         tableColumns.add(ColumnMetadata.builder().name("C_DECIMAL").adapterNotes("").type(new DecimalType(18, 2))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new DoubleType()).nullable(true)
-                .identity(true).defaultValue("").comment("").build());
+        tableColumns.add(ColumnMetadata.builder().name("C_DOUBLE").adapterNotes("").type(new DoubleType())
+                .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_1").adapterNotes("")
                 .type(new VarCharType(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_UTF8_2").adapterNotes("")
                 .type(new VarCharType(10000, UTF8)).nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_VARCHAR_ASCII").adapterNotes("")
-                .type(new VarCharType(10000, ASCII)).nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(
+                ColumnMetadata.builder().name("C_VARCHAR_ASCII").adapterNotes("").type(new VarCharType(10000, ASCII))
+                        .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_1").adapterNotes("").type(new CharType(3, UTF8))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_CHAR_UTF8_2").adapterNotes("").type(new CharType(3, UTF8))
@@ -93,12 +93,14 @@ class TablesMetadataParserTest {
                 .identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(new GeometryType(1))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_HASHTYPE").adapterNotes("").type(DataType.createHashtype(16))
+        tableColumns.add(ColumnMetadata.builder().name("C_HASHTYPE").adapterNotes("").type(new HashType(16))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_DS_1").adapterNotes("")
-                .type(new IntervalDaySecondType(2, 3)).nullable(true).identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_DS_2").adapterNotes("")
-                .type(new IntervalDaySecondType(3, 4)).nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(
+                ColumnMetadata.builder().name("C_INTERVAL_DS_1").adapterNotes("").type(new IntervalDaySecondType(2, 3))
+                        .nullable(true).identity(true).defaultValue("").comment("").build());
+        tableColumns.add(
+                ColumnMetadata.builder().name("C_INTERVAL_DS_2").adapterNotes("").type(new IntervalDaySecondType(3, 4))
+                        .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_YM_1").adapterNotes("")
                 .type(new IntervalYearMonthType(2)).nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_INTERVAL_YM_2").adapterNotes("")

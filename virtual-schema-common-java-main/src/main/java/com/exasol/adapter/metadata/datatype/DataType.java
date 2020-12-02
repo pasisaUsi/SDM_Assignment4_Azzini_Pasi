@@ -26,19 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create a <code>HASHTYPE</code> data type
-     *
-     * @param byteSize size in bytes
-     * @return <code>HASHTYPE</code> data type
-     */
-    public static DataType createHashtype(final int byteSize) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.HASHTYPE;
-        type.byteSize = byteSize;
-        return type;
-    }
-
-    /**
      * Get the Exasol data type without parameters
      *
      * @return Exasol data type

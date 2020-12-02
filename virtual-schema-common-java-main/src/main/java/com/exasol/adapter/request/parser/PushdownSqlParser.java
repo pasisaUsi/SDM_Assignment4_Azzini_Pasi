@@ -8,7 +8,6 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.DateType;
 import com.exasol.adapter.sql.*;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.KeyUniquenessConstraint;
 import com.exasol.adapter.sql.AbstractSqlPredicateJson.TypeConstraints;
@@ -345,7 +344,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
 
     private DataType getHashtype(final JsonObject dataType) {
         final int byteSize = dataType.getInt("bytesize");
-        return DataType.createHashtype(byteSize);
+        return new HashType(byteSize);
     }
 
     private DataType getVarchar(final JsonObject dataType) {

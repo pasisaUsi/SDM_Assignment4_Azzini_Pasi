@@ -20,7 +20,6 @@ import org.skyscreamer.jsonassert.JSONAssert;
 
 import com.exasol.adapter.metadata.*;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.DoubleType;
 
 class SchemaMetadataJsonConverterTest {
     private static final SchemaMetadataJsonConverter CONVERTER = SchemaMetadataJsonConverter.getInstance();
@@ -104,7 +103,7 @@ class SchemaMetadataJsonConverterTest {
     @Test
     void testConvertTypeHashtype() {
         final int bytesize = 16;
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createHashtype(bytesize));
+        final JsonObject jsonObject = CONVERTER.convertType(new HashType(bytesize));
         assertAll(() -> assertTypeName(jsonObject, "hashtype"),
                 () -> assertThat(jsonObject.getInt("bytesize"), equalTo(bytesize)));
     }

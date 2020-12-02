@@ -7,7 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.DoubleType;
 
 class DataTypeTest {
     @Test
@@ -112,7 +111,7 @@ class DataTypeTest {
 
     @Test
     void createHashtype() {
-        final DataType dataType = DataType.createHashtype(16);
+        final DataType dataType = new HashType(16);
         assertAll(() -> assertThat(dataType.getByteSize(), equalTo(16)),
                 () -> assertThat(dataType.toString(), equalTo("HASHTYPE(16 byte)")));
     }

@@ -10,7 +10,6 @@ import javax.json.*;
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
 import com.exasol.adapter.metadata.datatype.*;
-import com.exasol.adapter.metadata.datatype.DoubleType;
 
 /**
  * This class provides a parser for table metadata
@@ -107,7 +106,7 @@ public class TablesMetadataParser {
 
     private DataType getHashtypeDataType(final JsonObject dataType) {
         final int bytesize = dataType.getInt("bytesize");
-        return DataType.createHashtype(bytesize);
+        return new HashType(bytesize);
     }
 
     private DataType getGeometryDataType(final JsonObject dataType) {
