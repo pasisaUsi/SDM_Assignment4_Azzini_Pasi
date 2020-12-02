@@ -9,7 +9,7 @@ import javax.json.*;
 
 import com.exasol.adapter.metadata.ColumnMetadata;
 import com.exasol.adapter.metadata.TableMetadata;
-import com.exasol.adapter.metadata.datatype.DataType;
+import com.exasol.adapter.metadata.datatype.*;
 
 /**
  * This class provides a parser for table metadata
@@ -116,8 +116,8 @@ public class TablesMetadataParser {
 
     private DataType getIntervalDataType(final JsonObject dataType) {
         final int precision = dataType.getInt("precision", 2);
-        final DataType.IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
-        if (intervalType == DataType.IntervalType.DAY_TO_SECOND) {
+        final IntervalType intervalType = intervalTypeFromString(dataType.getString("fromTo"));
+        if (intervalType == IntervalType.DAY_TO_SECOND) {
             final int fraction = dataType.getInt("fraction", 3);
             return DataType.createIntervalDaySecond(precision, fraction);
         } else {
@@ -145,7 +145,7 @@ public class TablesMetadataParser {
 
     private DataType getVarcharDataType(final JsonObject dataType) {
         final String charSet = dataType.getString("characterSet", "UTF8");
-        return DataType.createVarChar(dataType.getInt("size"), charSetFromString(charSet));
+        return new VarChar(dataType.getInt("size"), charSetFromString(charSet));
     }
 
     private DataType getDoubleDataType() {
@@ -156,21 +156,21 @@ public class TablesMetadataParser {
         return DataType.createDecimal(dataType.getInt("precision"), dataType.getInt("scale"));
     }
 
-    private static DataType.ExaCharset charSetFromString(final String charset) {
+    private static ExaCharset charSetFromString(final String charset) {
         if ("UTF8".equals(charset)) {
-            return DataType.ExaCharset.UTF8;
+            return ExaCharset.UTF8;
         } else if ("ASCII".equals(charset)) {
-            return DataType.ExaCharset.ASCII;
+            return ExaCharset.ASCII;
         } else {
             throw new RequestParserException("Unsupported charset encountered: " + charset);
         }
     }
 
-    private static DataType.IntervalType intervalTypeFromString(final String intervalType) {
+    private static IntervalType intervalTypeFromString(final String intervalType) {
         if ("DAY TO SECONDS".equals(intervalType)) {
-            return DataType.IntervalType.DAY_TO_SECOND;
+            return IntervalType.DAY_TO_SECOND;
         } else if ("YEAR TO MONTH".equals(intervalType)) {
-            return DataType.IntervalType.YEAR_TO_MONTH;
+            return IntervalType.YEAR_TO_MONTH;
         } else {
             throw new RequestParserException("Unsupported interval data type encountered: " + intervalType);
         }
