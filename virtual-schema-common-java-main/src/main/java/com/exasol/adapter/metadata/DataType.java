@@ -359,6 +359,7 @@ public class DataType {
             break;
         case HASHTYPE:
             appendHashtype(builder);
+            break;
         }
         return builder.toString();
     }
