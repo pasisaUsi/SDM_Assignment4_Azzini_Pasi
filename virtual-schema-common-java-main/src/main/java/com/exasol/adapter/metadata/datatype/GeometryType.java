@@ -14,9 +14,7 @@ public class GeometryType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("GEOMETRY(%d)", this.geometrySrid));
-        return builder.toString();
+        return String.format("GEOMETRY(%d)", this.geometrySrid);
     }
 
     @Override
@@ -39,10 +37,7 @@ public class GeometryType extends DataType {
             return false;
         }
         final GeometryType other = (GeometryType) obj;
-        if (this.geometrySrid != other.geometrySrid) {
-            return false;
-        }
-        return true;
+        return this.geometrySrid == other.geometrySrid;
     }
 
 }

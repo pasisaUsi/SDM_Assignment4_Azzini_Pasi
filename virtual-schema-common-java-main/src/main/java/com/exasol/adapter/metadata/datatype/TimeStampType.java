@@ -42,10 +42,7 @@ public class TimeStampType extends DataType {
             return false;
         }
         final TimeStampType other = (TimeStampType) obj;
-        if (this.withLocalTimezone != other.withLocalTimezone) {
-            return false;
-        }
-        return true;
+        return this.withLocalTimezone == other.withLocalTimezone;
     }
 
 }

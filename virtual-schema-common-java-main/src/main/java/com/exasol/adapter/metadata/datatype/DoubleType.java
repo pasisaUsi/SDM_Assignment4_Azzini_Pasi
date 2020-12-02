@@ -8,9 +8,7 @@ public class DoubleType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("DOUBLE");
-        return builder.toString();
+        return "DOUBLE";
     }
 
     @Override
@@ -26,10 +24,7 @@ public class DoubleType extends DataType {
         if (!super.equals(obj)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
+        return getClass() == obj.getClass();
     }
 
 }

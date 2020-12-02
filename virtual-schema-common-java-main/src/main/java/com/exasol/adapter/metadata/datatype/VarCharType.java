@@ -24,10 +24,7 @@ public class VarCharType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("VARCHAR(%d) ", this.size));
-        builder.append(this.charset.toString());
-        return builder.toString();
+        return String.format("VARCHAR(%d) ", this.size) + this.charset.toString();
     }
 
     @Override
@@ -54,10 +51,7 @@ public class VarCharType extends DataType {
         if (this.charset != other.charset) {
             return false;
         }
-        if (this.size != other.size) {
-            return false;
-        }
-        return true;
+        return this.size == other.size;
     }
 
 }

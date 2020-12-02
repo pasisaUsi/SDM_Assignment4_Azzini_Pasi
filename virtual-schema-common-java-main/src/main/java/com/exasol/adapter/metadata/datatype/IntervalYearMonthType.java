@@ -8,10 +8,7 @@ public class IntervalYearMonthType extends IntervalDataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(super.toString());
-        builder.append(String.format("YEAR (%d) TO MONTH", this.precision));
-        return builder.toString();
+        return super.toString() + String.format("YEAR (%d) TO MONTH", this.precision);
     }
 
     @Override
@@ -27,10 +24,7 @@ public class IntervalYearMonthType extends IntervalDataType {
         if (!super.equals(obj)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
+        return getClass() == obj.getClass();
     }
 
 }

@@ -15,10 +15,7 @@ public class HashType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("HASHTYPE");
-        builder.append(String.format("(%d byte)", this.byteSize));
-        return builder.toString();
+        return "HASHTYPE" + String.format("(%d byte)", this.byteSize);
     }
 
     @Override
@@ -41,10 +38,7 @@ public class HashType extends DataType {
             return false;
         }
         final HashType other = (HashType) obj;
-        if (this.byteSize != other.byteSize) {
-            return false;
-        }
-        return true;
+        return this.byteSize == other.byteSize;
     }
 
 }

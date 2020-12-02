@@ -8,9 +8,7 @@ public class DateType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append("DATE");
-        return builder.toString();
+        return "DATE";
     }
 
     @Override
@@ -26,10 +24,7 @@ public class DateType extends DataType {
         if (!super.equals(obj)) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        return true;
+        return getClass() == obj.getClass();
     }
 
 }

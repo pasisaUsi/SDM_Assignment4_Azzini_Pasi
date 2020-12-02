@@ -15,10 +15,7 @@ public class IntervalDaySecondType extends IntervalDataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(super.toString());
-        builder.append(String.format("DAY (%d) TO SECOND (%d)", this.precision, this.fraction));
-        return builder.toString();
+        return super.toString() + String.format("DAY (%d) TO SECOND (%d)", this.precision, this.fraction);
     }
 
     @Override
@@ -41,10 +38,7 @@ public class IntervalDaySecondType extends IntervalDataType {
             return false;
         }
         final IntervalDaySecondType other = (IntervalDaySecondType) obj;
-        if (this.fraction != other.fraction) {
-            return false;
-        }
-        return true;
+        return this.fraction == other.fraction;
     }
 
 }

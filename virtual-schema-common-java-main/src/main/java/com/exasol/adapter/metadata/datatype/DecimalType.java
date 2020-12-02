@@ -20,9 +20,7 @@ public class DecimalType extends DataType {
 
     @Override
     public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(String.format("DECIMAL(%d, %d)", this.precision, this.scale));
-        return builder.toString();
+        return String.format("DECIMAL(%d, %d)", this.precision, this.scale);
     }
 
     @Override
@@ -49,10 +47,7 @@ public class DecimalType extends DataType {
         if (this.precision != other.precision) {
             return false;
         }
-        if (this.scale != other.scale) {
-            return false;
-        }
-        return true;
+        return this.scale == other.scale;
     }
 
 }
