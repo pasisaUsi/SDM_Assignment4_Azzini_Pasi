@@ -1,8 +1,5 @@
 package com.exasol.adapter.request.parser;
 
-import static com.exasol.adapter.sql.SqlPredicateIsJson.KeyUniquenessConstraint;
-import static com.exasol.adapter.sql.SqlPredicateIsJson.TypeConstraints;
-
 import java.math.BigDecimal;
 import java.util.*;
 
@@ -12,8 +9,10 @@ import com.exasol.adapter.metadata.*;
 import com.exasol.adapter.metadata.DataType.ExaCharset;
 import com.exasol.adapter.metadata.DataType.IntervalType;
 import com.exasol.adapter.sql.*;
-import com.exasol.adapter.sql.SqlFunctionAggregateListagg.Behavior.TruncationType;
+import com.exasol.adapter.sql.AbstractSqlPredicateJson.KeyUniquenessConstraint;
+import com.exasol.adapter.sql.AbstractSqlPredicateJson.TypeConstraints;
 import com.exasol.adapter.sql.SqlFunctionAggregateListagg.*;
+import com.exasol.adapter.sql.SqlFunctionAggregateListagg.Behavior.TruncationType;
 
 public final class PushdownSqlParser extends AbstractRequestParser {
     private static final String ORDER_BY_KEY = "orderBy";
@@ -383,9 +382,9 @@ public final class PushdownSqlParser extends AbstractRequestParser {
     }
 
     private static ExaCharset charSetFromString(final String charset) {
-        if (charset.equals("UTF8")) {
+        if ("UTF8".equals(charset)) {
             return ExaCharset.UTF8;
-        } else if (charset.equals("ASCII")) {
+        } else if ("ASCII".equals(charset)) {
             return ExaCharset.ASCII;
         } else {
             throw new IllegalArgumentException(
@@ -394,9 +393,9 @@ public final class PushdownSqlParser extends AbstractRequestParser {
     }
 
     private static IntervalType intervalTypeFromString(final String intervalType) {
-        if (intervalType.equals("DAY TO SECONDS")) {
+        if ("DAY TO SECONDS".equals(intervalType)) {
             return IntervalType.DAY_TO_SECOND;
-        } else if (intervalType.equals("YEAR TO MONTH")) {
+        } else if ("YEAR TO MONTH".equals(intervalType)) {
             return IntervalType.YEAR_TO_MONTH;
         } else {
             throw new IllegalArgumentException("Unsupported interval data type encountered: " + intervalType //
