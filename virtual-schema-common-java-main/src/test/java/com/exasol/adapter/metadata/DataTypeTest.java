@@ -1,12 +1,11 @@
 package com.exasol.adapter.metadata;
 
+import com.exasol.adapter.metadata.datatype.*;
+import org.junit.jupiter.api.Test;
+
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
-
-import org.junit.jupiter.api.Test;
-
-import com.exasol.adapter.metadata.datatype.*;
 
 class DataTypeTest {
     @Test

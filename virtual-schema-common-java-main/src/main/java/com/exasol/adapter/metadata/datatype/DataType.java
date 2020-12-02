@@ -51,10 +51,7 @@ public abstract class DataType {
             return false;
         }
         final DataType other = (DataType) obj;
-        if (this.exaDataType != other.exaDataType) {
-            return false;
-        }
-        return true;
+        return this.exaDataType == other.exaDataType;
     }
 
 }
