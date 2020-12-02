@@ -96,7 +96,7 @@ class SchemaMetadataJsonConverterTest {
     @Test
     void testConvertTypeGeometry() {
         final int srid = 2;
-        final JsonObject jsonObject = CONVERTER.convertType(DataType.createGeometry(srid));
+        final JsonObject jsonObject = CONVERTER.convertType(new Geometry(srid));
         assertAll(() -> assertTypeName(jsonObject, "geometry"),
                 () -> assertThat(jsonObject.getInt("srid"), equalTo(srid)));
     }

@@ -112,7 +112,7 @@ public class TablesMetadataParser {
 
     private DataType getGeometryDataType(final JsonObject dataType) {
         final int srid = dataType.getInt("srid");
-        return DataType.createGeometry(srid);
+        return new Geometry(srid);
     }
 
     private DataType getIntervalDataType(final JsonObject dataType) {

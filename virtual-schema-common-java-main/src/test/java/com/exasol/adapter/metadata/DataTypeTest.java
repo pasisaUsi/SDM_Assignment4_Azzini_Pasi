@@ -74,7 +74,7 @@ class DataTypeTest {
 
     @Test
     void createGeometry() {
-        final DataType dataType = DataType.createGeometry(4);
+        final DataType dataType = new Geometry(4);
         assertAll(() -> assertThat(dataType.getGeometrySrid(), equalTo(4)),
                 () -> assertThat(dataType.toString(), equalTo("GEOMETRY(4)")));
     }

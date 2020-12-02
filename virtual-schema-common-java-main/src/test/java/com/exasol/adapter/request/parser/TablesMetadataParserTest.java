@@ -91,7 +91,7 @@ class TablesMetadataParserTest {
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_BOOLEAN").adapterNotes("").type(new Bool()).nullable(true)
                 .identity(true).defaultValue("").comment("").build());
-        tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(DataType.createGeometry(1))
+        tableColumns.add(ColumnMetadata.builder().name("C_GEOMETRY").adapterNotes("").type(new Geometry(1))
                 .nullable(true).identity(true).defaultValue("").comment("").build());
         tableColumns.add(ColumnMetadata.builder().name("C_HASHTYPE").adapterNotes("").type(DataType.createHashtype(16))
                 .nullable(true).identity(true).defaultValue("").comment("").build());

@@ -380,7 +380,7 @@ public final class PushdownSqlParser extends AbstractRequestParser {
 
     private DataType getGeometry(final JsonObject dataType) {
         final int srid = dataType.getInt("srid");
-        return DataType.createGeometry(srid);
+        return new Geometry(srid);
     }
 
     private static ExaCharset charSetFromString(final String charset) {

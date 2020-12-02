@@ -26,21 +26,6 @@ public class DataType {
     }
 
     /**
-     * Create a <code>GEOMETRY</code> data type
-     *
-     * @param srid Spatial Reference System Identifier
-     * @return <code>GEOMETRY</code> data type
-     * @see <a href="https://en.wikipedia.org/wiki/Spatial_reference_system#Identifier">Spatial Reference System
-     *      Identifier (Wikipedia)</a>
-     */
-    public static DataType createGeometry(final int srid) {
-        final DataType type = new DataType();
-        type.exaDataType = ExaDataType.GEOMETRY;
-        type.geometrySrid = srid;
-        return type;
-    }
-
-    /**
      * Create an <code>INTERVAL DAY TO SECOND</code> data type
      *
      * @param precision number of days the interval can span
