@@ -13,16 +13,23 @@ public final class AdapterRegistry {
     private static AdapterRegistry instance;
     private final Map<String, AdapterFactory> registeredFactories = new HashMap<>();
 
+    private AdapterRegistry() {
+    }
+
     /**
      * Get the singleton instance of the {@link AdapterRegistry}
      *
      * @return singleton instance
      */
-    public static synchronized AdapterRegistry getInstance() {
+    public static AdapterRegistry getInstance() {
         if (instance == null) {
-            LOGGER.finer(() -> "Instantiating Virtual Schema Adapter registry and loading adapter factories.");
-            instance = new AdapterRegistry();
-            instance.loadAdapterFactories();
+            synchronized (AdapterRegistry.class) {
+                if (instance == null) {
+                    LOGGER.finer(() -> "Instantiating Virtual Schema Adapter registry and loading adapter factories.");
+                    instance = new AdapterRegistry();
+                    instance.loadAdapterFactories();
+                }
+            }
         }
         return instance;
     }
@@ -104,10 +111,8 @@ public final class AdapterRegistry {
         if (this.registeredFactories.isEmpty()) {
             return "No Virtual Schema Adapter factories are currently registered.";
         } else {
-            return "Currently registered Virtual Schema Adapter factories: "
-                    + this.registeredFactories.keySet().stream()
-                        .map(name -> String.format("\"%s\"", name))
-                        .collect(Collectors.joining(", "));
+            return "Currently registered Virtual Schema Adapter factories: " + this.registeredFactories.keySet()
+                    .stream().map(name -> String.format("\"%s\"", name)).collect(Collectors.joining(", "));
         }
     }
 }
