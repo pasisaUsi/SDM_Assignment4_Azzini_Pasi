@@ -16,16 +16,26 @@ import com.exasol.logging.VersionCollector;
  * responsible adapter.
  */
 public final class RequestDispatcher {
-    private static final RequestDispatcher INSTANCE = new RequestDispatcher();
+    private static RequestDispatcher instance;
     private static final Logger LOGGER = Logger.getLogger(RequestDispatcher.class.getName());
+
+    private RequestDispatcher() {
+    }
 
     /**
      * Get the singleton instance of the {@link RequestDispatcher}
      *
      * @return singleton instance
      */
-    public static synchronized RequestDispatcher getInstance() {
-        return INSTANCE;
+    public static RequestDispatcher getInstance() {
+        if (instance == null) {
+            synchronized (RequestDispatcher.class) {
+                if (instance == null) {
+                    instance = new RequestDispatcher();
+                }
+            }
+        }
+        return instance;
     }
 
     /**
