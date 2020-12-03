@@ -1,10 +1,10 @@
 package com.exasol.adapter;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.instanceOf;
 import static org.hamcrest.collection.IsEmptyCollection.emptyCollectionOf;
 import static org.hamcrest.collection.IsIterableContainingInAnyOrder.containsInAnyOrder;
-import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.AfterEach;
@@ -68,6 +68,6 @@ class AdapterRegistryTest {
 
     @Test
     void testDescribeWithNoFactories() {
-        assertThat(this.registry.describe(), equalTo("No Virtual Schema Adapter factories are currently reqistered."));
+        assertThat(this.registry.describe(), equalTo("No Virtual Schema Adapter factories are currently registered."));
     }
 }
