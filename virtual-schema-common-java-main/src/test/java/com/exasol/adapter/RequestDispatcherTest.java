@@ -211,7 +211,7 @@ class RequestDispatcherTest {
     }
 
     @Test
-    void testExecuteAdapterCallThrowsException(final Capturable stream) throws AdapterException {
+    void testExecuteAdapterCallThrowsException(final Capturable stream) {
         final String rawRequest = "{\n" //
                 + "    \"type\" : \"createVirtualSchema\",\n" //
                 + "    \"schemaMetadataInfo\" :\n" //
