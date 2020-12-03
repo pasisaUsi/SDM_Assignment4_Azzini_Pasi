@@ -17,7 +17,7 @@ public final class AdapterRegistry {
      *
      * @return singleton instance
      */
-    public static final synchronized AdapterRegistry getInstance() {
+    public static synchronized AdapterRegistry getInstance() {
         if (instance == null) {
             LOGGER.finer(() -> "Instantiating Virtual Schema Adapter registry and loading adapter factories.");
             instance = new AdapterRegistry();
