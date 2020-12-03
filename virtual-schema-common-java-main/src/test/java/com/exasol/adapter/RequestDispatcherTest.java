@@ -79,8 +79,7 @@ class RequestDispatcherTest {
                 .identity(false).defaultValue("").comment("").build());
         final List<TableMetadata> tables = new ArrayList<>();
         tables.add(new TableMetadata("FOO", null, columns, ""));
-        final SchemaMetadata metadata = new SchemaMetadata(rawRequest, tables);
-        return metadata;
+        return new SchemaMetadata(rawRequest, tables);
     }
 
     @Test

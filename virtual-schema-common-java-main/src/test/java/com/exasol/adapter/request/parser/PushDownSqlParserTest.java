@@ -775,7 +775,7 @@ class PushDownSqlParserTest {
         final SqlLiteralString sqlLiteralString2 = (SqlLiteralString) results.get(1);
         assertAll(() -> assertThat(sqlFunctionScalarCase.getType(), equalTo(FUNCTION_SCALAR_CASE)),
                 () -> assertThat(sqlFunctionScalarCase.getBasis(), instanceOf(SqlNode.class)),
-                () -> assertThat(sqlLiteralExactnumeric1.getValue(), equalTo(new BigDecimal(1))),
+                () -> assertThat(sqlLiteralExactnumeric1.getValue(), equalTo(BigDecimal.ONE)),
                 () -> assertThat(sqlLiteralExactnumeric2.getValue(), equalTo(new BigDecimal(2))),
                 () -> assertThat(sqlLiteralString1.getValue(), equalTo("VERY GOOD")),
                 () -> assertThat(sqlLiteralString2.getValue(), equalTo("GOOD")));
