@@ -101,7 +101,7 @@ public final class AdapterRegistry {
      */
     public String describe() {
         if (this.registeredFactories.isEmpty()) {
-            return "No Virtual Schema Adapter factories are currently reqistered.";
+            return "No Virtual Schema Adapter factories are currently registered.";
         } else {
             final StringBuilder builder = new StringBuilder("Currently registered Virtual Schema Adapter factories: ");
             boolean first = true;
@@ -117,5 +117,9 @@ public final class AdapterRegistry {
             }
             return builder.toString();
         }
+    }
+
+    public static void main(String[] args) {
+
     }
 }
