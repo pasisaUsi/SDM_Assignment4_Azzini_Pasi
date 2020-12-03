@@ -2,6 +2,7 @@ package com.exasol.adapter;
 
 import java.util.*;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  * {@link VirtualSchemaAdapter}s need to be registered in the {@link AdapterRegistry} in order to receive requests from
@@ -103,23 +104,10 @@ public final class AdapterRegistry {
         if (this.registeredFactories.isEmpty()) {
             return "No Virtual Schema Adapter factories are currently registered.";
         } else {
-            final StringBuilder builder = new StringBuilder("Currently registered Virtual Schema Adapter factories: ");
-            boolean first = true;
-            for (final String name : this.registeredFactories.keySet()) {
-                if (first) {
-                    first = false;
-                } else {
-                    builder.append(", ");
-                }
-                builder.append("\"");
-                builder.append(name);
-                builder.append("\"");
-            }
-            return builder.toString();
+            return "Currently registered Virtual Schema Adapter factories: "
+                    + this.registeredFactories.keySet().stream()
+                        .map(name -> String.format("\"%s\"", name))
+                        .collect(Collectors.joining(", "));
         }
-    }
-
-    public static void main(String[] args) {
-
     }
 }
