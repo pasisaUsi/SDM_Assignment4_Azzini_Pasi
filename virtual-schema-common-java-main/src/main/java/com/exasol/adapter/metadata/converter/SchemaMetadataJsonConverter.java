@@ -112,7 +112,10 @@ public final class SchemaMetadataJsonConverter {
             typeAsJson.add("precision", ((DecimalType) dataType).getPrecision());
             typeAsJson.add("scale", ((DecimalType) dataType).getScale());
             break;
-        case VARCHAR: // falling through intentionally
+        case VARCHAR:
+            typeAsJson.add("size", ((VarCharType) dataType).getSize());
+            typeAsJson.add("characterSet", getCharacterSetName(((VarCharType) dataType).getCharset()));
+            break;
         case CHAR:
             typeAsJson.add("size", ((CharType) dataType).getSize());
             typeAsJson.add("characterSet", getCharacterSetName(((CharType) dataType).getCharset()));
