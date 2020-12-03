@@ -19,7 +19,7 @@ public final class AdapterRegistry {
      */
     public static final synchronized AdapterRegistry getInstance() {
         if (instance == null) {
-            LOGGER.finer(() -> "Instanciating Virtual Schema Adapter registry and loading adapter factories.");
+            LOGGER.finer(() -> "Instantiating Virtual Schema Adapter registry and loading adapter factories.");
             instance = new AdapterRegistry();
             instance.loadAdapterFactories();
         }
