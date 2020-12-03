@@ -50,10 +50,7 @@ public abstract class IntervalDataType extends DataType {
         if (this.intervalType != other.intervalType) {
             return false;
         }
-        if (this.precision != other.precision) {
-            return false;
-        }
-        return true;
+        return this.precision != other.precision;
     }
 
 }
