@@ -5,9 +5,16 @@ import org.mockito.Mockito;
 import com.exasol.adapter.sql.SqlNodeVisitor;
 
 /**
+ * Utility class
  * This class contains static helper methods to improve mocking convenience.
  */
 public final class MockUtils {
+
+    // Private constructor to prevent instantiation
+    private MockUtils() {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * Create a mock for an {@link SqlNodeVisitor}.
      * <p>
